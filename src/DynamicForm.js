@@ -225,9 +225,9 @@ export class DynamicForm extends Component {
                     "aside": "$"
                 }
             ]
-            emissions = Math.round(totalScore * 2205)
-            trees = Math.round(totalScore * 4.41)
-            homes = Math.round(totalScore * 0.4)
+            emissions = Math.round(totalScore * 2205).toLocaleString()
+            trees = Math.round(totalScore * 4.41).toLocaleString()
+            homes = Math.round(totalScore * 0.4).toLocaleString()
         }
 
         return (
