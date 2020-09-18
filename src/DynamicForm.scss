@@ -177,3 +177,7 @@ $option-fill-stats: white;
         // font-weight: unset;
     }
 }
+
+.tooltip-top > .tooltip-inner {
+    max-width: max-content;
+}

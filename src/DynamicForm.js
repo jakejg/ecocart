@@ -284,8 +284,8 @@ export class DynamicForm extends Component {
                                 trigger="click"
                                 placement={'top'}
                                 overlay={
-                                    <Tooltip id={`tooltip-${'top'}`}>
-                                        Offset your carbon footprint by heping protect the <a className={'boldface-link'} href="#">Tri-City Forest</a>
+                                    <Tooltip id={'tooltip-top'} className={'tooltip-top'}>
+                                        Offset your carbon footprint by heping protect the <a className={'boldface-link'} href="https://ecocart.io/our-projects" target="_blank">Tri-City Forest</a>
                                     </Tooltip>
                                 }
                             >
