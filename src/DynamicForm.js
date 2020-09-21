@@ -6,6 +6,8 @@ import { CarbonData } from './CarbonData'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLongArrowAltLeft, faLongArrowAltRight, faQuestionCircle } from '@fortawesome/free-solid-svg-icons'
 
+import { CSSTransition } from 'react-transition-group'
+
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Card from 'react-bootstrap/Card'
@@ -39,64 +41,73 @@ export class DynamicForm extends Component {
             payableAmount: 10,
             productName: "Test",
             clickedCheckoutConfirm: false,
-            connectionError: false
+            connectionError: false,
+            slideAnimation: true
         }
     }
 
     nextQuestionHandler = () => {
         var { selectedAnswers, carbonScores, options, currAnswer, path } = this.state
-
-        console.log('nextQuestionHandler / currAnswer:', currAnswer);
-
-        // computing score for this question
-        var score = 0
-        for (var i = 0; i < currAnswer.length; i++) {
-            var thisAnswer = currAnswer[i]
-            var thisAnswerScore = options[i].score
-            if (thisAnswer == null || thisAnswerScore == null) continue
-            if (typeof (thisAnswerScore) != 'string') score += thisAnswerScore
-            else if (thisAnswerScore.includes('value')) score += eval(thisAnswerScore.replace('value', thisAnswer))
-            else if (thisAnswerScore.includes('prevScore')) {
-                console.log('Hi')
-                score += eval(thisAnswerScore.replace('prevScore', carbonScores[carbonScores.length - 1]))
-                console.log('Hello')
-            }
-            else if (thisAnswerScore.includes('prevSelections')) score += eval(thisAnswerScore.replace('prevSelections', `'${selectedAnswers[selectedAnswers.length - 1]}'.split(',')`))
-        }
-        carbonScores.push(score)
-        console.log('Score', carbonScores)
-
-        selectedAnswers.push(currAnswer)  // commits currently selected answer
-        console.log('Selected answers', selectedAnswers)
-        currAnswer = []  // resets currently selected answer
-        path.push(path[path.length - 1] + 1)  // moves to next question
-        console.log('Path', path)
-
-        if (path[path.length - 1] < CarbonData.length) {
-            const questionObject = CarbonData[path[path.length - 1]]
-            var { condition } = questionObject
-            if (condition != null) {
-                condition = condition.replace('prevSelections', `'${selectedAnswers[selectedAnswers.length - 1]}'.split(',')`)
-                console.log('Question\'s gating condition', condition)  // [revisit] remove
-                var result = eval(condition)
-                if (typeof (result) == 'boolean')
-                    if (!result) {
-                        if (path[path.length - 1] + 1 < CarbonData.length) path.push(path.pop() + 1)
-                        else this.handleSubmit()
-                    }
-            }
-        } else {  // if next question is out of bounds
-            this.handleSubmit()
-            return
-        }
-
         this.setState({
-            path,
-            pathAbs: path.join(' '),
-            currAnswer,
-            carbonScores,
-            disabled: true
+            slideAnimation: false
         })
+        function wait(){
+            console.log('nextQuestionHandler / currAnswer:', currAnswer);
+
+            // computing score for this question
+            var score = 0
+            for (var i = 0; i < currAnswer.length; i++) {
+                var thisAnswer = currAnswer[i]
+                var thisAnswerScore = options[i].score
+                if (thisAnswer == null || thisAnswerScore == null) continue
+                if (typeof (thisAnswerScore) != 'string') score += thisAnswerScore
+                else if (thisAnswerScore.includes('value')) score += eval(thisAnswerScore.replace('value', thisAnswer))
+                else if (thisAnswerScore.includes('prevScore')) {
+                    console.log('Hi')
+                    score += eval(thisAnswerScore.replace('prevScore', carbonScores[carbonScores.length - 1]))
+                    console.log('Hello')
+                }
+                else if (thisAnswerScore.includes('prevSelections')) score += eval(thisAnswerScore.replace('prevSelections', `'${selectedAnswers[selectedAnswers.length - 1]}'.split(',')`))
+            }
+            carbonScores.push(score)
+            console.log('Score', carbonScores)
+
+            selectedAnswers.push(currAnswer)  // commits currently selected answer
+            console.log('Selected answers', selectedAnswers)
+            currAnswer = []  // resets currently selected answer
+            path.push(path[path.length - 1] + 1)  // moves to next question
+            console.log('Path', path)
+
+            if (path[path.length - 1] < CarbonData.length) {
+                const questionObject = CarbonData[path[path.length - 1]]
+                var { condition } = questionObject
+                if (condition != null) {
+                    condition = condition.replace('prevSelections', `'${selectedAnswers[selectedAnswers.length - 1]}'.split(',')`)
+                    console.log('Question\'s gating condition', condition)  // [revisit] remove
+                    var result = eval(condition)
+                    if (typeof (result) == 'boolean')
+                        if (!result) {
+                            if (path[path.length - 1] + 1 < CarbonData.length) path.push(path.pop() + 1)
+                            else this.handleSubmit()
+                        }
+                }
+            } else {  // if next question is out of bounds
+                this.handleSubmit()
+                return
+            }
+
+                this.setState({
+                    path,
+                    pathAbs: path.join(' '),
+                    currAnswer,
+                    carbonScores,
+                    disabled: true,
+                    slideAnimation: true
+                })
+            }
+        // wait for exit transition to finish, before setting state to start entrance transition
+        setTimeout(wait.bind(this), 700)
+        
     }
 
     prevQuestionHandler = () => {
@@ -255,6 +266,13 @@ export class DynamicForm extends Component {
                         <ProgressBar now={(disabled ? path[path.length - 1] : path[path.length - 1] + 1) / CarbonData.length * 100} />
                     </div>
                 }
+                <CSSTransition 
+                 in={this.state.slideAnimation}
+                 classNames="question"
+                 timeout={700}
+                 appear
+                 >
+                <div>
                 {!isAtSummary
                     ? <Row>
                         <Col xs="5">
@@ -338,7 +356,6 @@ export class DynamicForm extends Component {
                         </div>
                     }
                 </div>
-
                 {!isAtSummary &&
                     <Row className={'nudge-down-l'}>
                         <Col className={'text-left'}>
@@ -357,7 +374,8 @@ export class DynamicForm extends Component {
                         </Col>
                     </Row>
                 }
-
+                </div>
+                </CSSTransition>
                 <Modal show={this.state.checkoutModalShow} onHide={() => this.setState({ checkoutModalShow: false })} size={'lg'} centered>
                     <Modal.Header closeButton>
                         <Modal.Title>Awesome! Would you like to confirm payment?</Modal.Title>

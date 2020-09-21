@@ -59,6 +59,19 @@ $option-fill-stats: white;
         // width: $question-image-width;
         height: $question-image-height;
     }
+    .question-enter, .question-appear {
+        transform: translateY(-1000px);
+    }
+    
+    .question-enter-active, .question-appear-active {
+        transform: translateY(0px);
+        transition: all 700ms;
+    }
+
+    .question-exit-active {
+        transform: translateY(1000px);
+        transition: all 700ms;
+    }
 
     .header {
         @extend .header;

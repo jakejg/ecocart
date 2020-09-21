@@ -19,6 +19,7 @@ $checkout-content-rounded-edges: 5px;
     border: solid grey 2px;
     border-radius: 20px;
     margin: 10px;
+    overflow: hidden;
 
     .home-content {
         padding: $spacing;
