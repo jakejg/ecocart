@@ -309,13 +309,15 @@ export class DynamicForm extends Component {
                                     });
                                 }} body>
                                 <Row>
-                                    <Col>{options[answerIndex].value}</Col>
-                                    <Col className={'text-right'}>
-                                        {options[answerIndex].type == 'input' && currAnswer[answerIndex] != null &&
-                                            <input onClick={(event) => event.stopPropagation()} onChange={(event) => this.checkAnswer(answerIndex, event.target.value, () => { }, event.target)} autoFocus className={'option-input'} value={currAnswer[answerIndex]}></input>
-                                        }
-                                        <span className={'option-aside'}>{options[answerIndex].aside}</span>
-                                    </Col>
+                                    <Col className={options[answerIndex].aside ? null : `main-text`}>{options[answerIndex].value}</Col>
+                                    {options[answerIndex].aside &&
+                                        <Col className={'text-right'}>
+                                            {options[answerIndex].type == 'input' && currAnswer[answerIndex] != null &&
+                                                <input onClick={(event) => event.stopPropagation()} onChange={(event) => this.checkAnswer(answerIndex, event.target.value, () => { }, event.target)} autoFocus className={'option-input'} value={currAnswer[answerIndex]}></input>
+                                            }
+                                            <span className={'option-aside'}>{options[answerIndex].aside}</span>
+                                        </Col>
+                                    }
                                 </Row>
                             </Card>
                         )
