@@ -129,6 +129,16 @@ export class DynamicForm extends Component {
         })
     }
 
+    // function to only allows users to type positive numbers greater than 0
+    validateInput = (input) => {
+        input = input.replace(/[^0-9]/, '')
+        // don't allow a zero to be typed first
+        if (input.startsWith('0')) {
+            input = input.slice(1)
+        }
+        return input
+    }
+
     checkAnswer = (answerIndex, answer, callback, isTypedInput) => {
         var { currAnswer, options, path } = this.state
         var multiple = path[path.length - 1] < CarbonData.length ? CarbonData[path[path.length - 1]].multiple : false
@@ -140,9 +150,10 @@ export class DynamicForm extends Component {
             currAnswer[answerIndex] = answer
         }
         console.log('Curr answer', currAnswer)
-        //only allow users to type positive numbers
+
+        // only allow users to type positive numbers
         if (isTypedInput){
-            currAnswer[answerIndex] = currAnswer[answerIndex].replace(/[^0-9]/, '')
+            currAnswer[answerIndex] = this.validateInput(currAnswer[answerIndex]);
         }
         this.setState({
             currAnswer,
