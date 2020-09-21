@@ -257,15 +257,17 @@ export class DynamicForm extends Component {
         }
 
         return (
-            <div class="form">
-                {!isAtSummary &&
+            <>
+            {!isAtSummary &&
                     <div class="progress-container">
                         <div class="progress-text">{
                             `${(disabled ? path[path.length - 1] : path[path.length - 1] + 1)} of ${CarbonData.length} answered`
                         }</div>
                         <ProgressBar now={(disabled ? path[path.length - 1] : path[path.length - 1] + 1) / CarbonData.length * 100} />
                     </div>
-                }
+            }
+            <div class="form">
+            
                 <CSSTransition 
                  in={this.state.slideAnimation}
                  classNames="question"
@@ -275,10 +277,10 @@ export class DynamicForm extends Component {
                 <div>
                 {!isAtSummary
                     ? <Row>
-                        <Col xs="5">
+                        <Col md="6">
                             <img class="question-image" src={require(`./assets/images/${questionObj.icon}.png`)}></img>
                         </Col>
-                        <Col className={'flex-center'}>
+                        <Col md="6" className={'flex-center'}>
                             <div class="header">{question}</div>
                             {questionObj.multiple &&
                                 <div class="text-left nudge-down subheader">Select multiple.</div>
@@ -407,7 +409,7 @@ export class DynamicForm extends Component {
                 </Modal>
 
             </div>
-
+        </>
         )
     }
 }

@@ -34,26 +34,6 @@ $option-fill-stats: white;
 .form {
     max-width: $content-width;
     margin: 0 auto;
-    .progress-container {
-        background-color: $progress-container;
-        color: $option-aside;
-        text-align: start;
-        padding: $icon-text-spacing;
-        border-radius: $box-radius;
-        position: absolute;
-        left: $spacing;
-        width: $progress-container-width;
-        .progress-text {
-            margin-bottom: $icon-text-spacing/2;
-        }
-        .progress {
-            height: $progress-height;
-            background-color: $progress-background;
-        }
-        .progress-bar {
-            background-color: white;
-        }
-    }
 
     .question-image {
         // width: $question-image-width;
@@ -188,6 +168,32 @@ $option-fill-stats: white;
         @extend .subheader;
         @extend .nudge-down;
         // font-weight: unset;
+    }
+}
+
+@media (max-width: 400px){
+    .form{
+        max-width: 100%;
+    }
+}
+
+.progress-container {
+    background-color: $progress-container;
+    color: $option-aside;
+    text-align: start;
+    padding: $icon-text-spacing;
+    margin-bottom: 5px;
+    border-radius: $box-radius;
+    width: $progress-container-width;
+    .progress-text {
+        margin-bottom: $icon-text-spacing/2;
+    }
+    .progress {
+        height: $progress-height;
+        background-color: $progress-background;
+    }
+    .progress-bar {
+        background-color: white;
     }
 }
 
