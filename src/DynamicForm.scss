@@ -73,7 +73,7 @@ $option-fill-stats: white;
         border: $options-border-selected;
         background-color: $option-fill-selected;
         animation-name: animate-option-selection;
-        animation-duration: 1s;
+        animation-duration: 500ms;
     }
 
     .options-stats {
@@ -107,22 +107,22 @@ $option-fill-stats: white;
             border: $options-border;
             background-color: $option-fill;
         }
-        20% {
-            border: $options-border-selected;
-            background-color: $option-fill-selected;
-        }
-        40% {
-            border: $options-border;
-            background-color: $option-fill;
-        }
-        60% {
-            border: $options-border-selected;
-            background-color: $option-fill-selected;
-        }
-        80% {
-            border: $options-border;
-            background-color: $option-fill;
-        }
+        // 20% {
+        //     border: $options-border-selected;
+        //     background-color: $option-fill-selected;
+        // }
+        // 40% {
+        //     border: $options-border;
+        //     background-color: $option-fill;
+        // }
+        // 60% {
+        //     border: $options-border-selected;
+        //     background-color: $option-fill-selected;
+        // }
+        // 80% {
+        //     border: $options-border;
+        //     background-color: $option-fill;
+        // }
         100% {
             border: $options-border-selected;
             background-color: $option-fill-selected;
@@ -159,7 +159,7 @@ $option-fill-stats: white;
         }
     }
 
-    @media (max-width: 300px){
+    @media (max-width: 400px){
         .stats-container {
             flex-direction: column;
         }
