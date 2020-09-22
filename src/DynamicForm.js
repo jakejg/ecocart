@@ -340,7 +340,7 @@ export class DynamicForm extends Component {
                                     });
                                 }} body>
                                 <Row>
-                                    <Col className={options[answerIndex].aside ? null : `main-text`}>{options[answerIndex].value}</Col>
+                                    <Col className={options[answerIndex].aside ? null : `main-text`}><span className="text">{options[answerIndex].value}</span></Col>
                                     {options[answerIndex].aside &&
                                         <Col className={'text-right'}>
                                             {options[answerIndex].type == 'input' && currAnswer[answerIndex] != null &&
@@ -360,7 +360,7 @@ export class DynamicForm extends Component {
                 </div>
                 {!isAtSummary &&
                     <Row className={'nudge-down-l'}>
-                        <Col className={'text-left'}>
+                        <Col className={'text-left back-col'}>
                             {path.length > 1 &&
                                 <Button className={'action-button back-button'} onClick={this.prevQuestionHandler} variant="success">
                                     <FontAwesomeIcon className={'nudge-left-l'} icon={faLongArrowAltLeft} />
@@ -368,7 +368,7 @@ export class DynamicForm extends Component {
                                 </Button>
                             }
                         </Col>
-                        <Col className={'text-right'}>
+                        <Col className={'text-right next-col'}>
                             <Button className={'action-button'} disabled={this.state.disabled} onClick={this.nextQuestionHandler} variant="success">
                                 NEXT
                                 <FontAwesomeIcon className={'nudge-right-l'} icon={faLongArrowAltRight} />

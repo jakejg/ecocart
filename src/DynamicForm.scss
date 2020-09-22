@@ -159,6 +159,12 @@ $option-fill-stats: white;
         }
     }
 
+    @media (max-width: 300px){
+        .stats-container {
+            flex-direction: column;
+        }
+    }
+
     .back-button {
         background-color: $back-button-color;
         border: none;
@@ -168,12 +174,31 @@ $option-fill-stats: white;
         @extend .subheader;
         @extend .nudge-down;
         // font-weight: unset;
-    }
+    } 
 }
 
 @media (max-width: 400px){
     .form{
         max-width: 100%;
+    }
+    .action-button {
+        transform: scale(.7);
+    }
+
+    .next-col {
+        margin-right: 50px;
+    }
+    
+    .text {
+        display: block;
+        font-size: 18px;
+        line-height: 20px;
+    }
+    .option-aside{
+        @extend .text;
+    }
+    .home-content {
+        padding: 0px;
     }
 }
 

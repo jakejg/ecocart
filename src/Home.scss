@@ -27,6 +27,12 @@ $checkout-content-rounded-edges: 5px;
         margin: 0 auto;
     }
 
+    @media (max-width: 400px){
+        .home-content {
+            padding: 15px;
+        }
+    }
+
     .checkout-overlay {
         position: absolute;
         left: 0;
