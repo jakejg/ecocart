@@ -140,14 +140,33 @@ export class DynamicForm extends Component {
         })
     }
 
-    // function to only allows users to type positive numbers greater than 0
+    // function to only allows users to type positive whole numbers greater than 0
     validateInput = (input) => {
-        input = input.replace(/[^0-9]/, '')
+        input = input.replace(/[^0-9]/, '');
         // don't allow a zero to be typed first
         if (input.startsWith('0')) {
-            input = input.slice(1)
+            input = input.slice(1);
         }
-        return input
+        return input;
+    }
+
+    // function to only allows users to type valid monetary amounts
+    validateMoneyInput(input){
+        input = input.replace(/[^0-9.]/, '');
+
+        // don't allow a user to type more than 2 characers after "."
+        if (input[input.length - 4] === ".") {
+            input = input.slice(0, input.length - 1);
+        }
+        return input;
+    }
+
+    handleTyping = (e) => {
+        let { value } = e.target;
+        value = this.validateMoneyInput(value);
+        this.setState({
+            payableAmount: value
+        })
     }
 
     checkAnswer = (answerIndex, answer, callback, isTypedInput) => {
@@ -248,7 +267,7 @@ export class DynamicForm extends Component {
                 {
                     "type": "input",
                     "value": "Offset what you want",
-                    "aside": "$"
+                    "aside": "Offset my emissions"
                 }
             ]
             emissions = Math.round(totalScore * 2205).toLocaleString()
@@ -334,7 +353,15 @@ export class DynamicForm extends Component {
                         ? Object.keys(options).map(answerIndex =>
                             <Card key={`${path[path.length - 1]}${answerIndex}`} className={`nudge-down options ${currAnswer[answerIndex] != null ? "options-selected" : ''} ${isAtSummary ? "options-stats" : ''}`}
                                 onClick={() => {
-                                    if (this.state.isAtSummary) { this.setState({ payableAmount: options[answerIndex].value.substring(1), productName: options[answerIndex].aside, checkoutModalShow: true }); return; }
+                                    if (this.state.isAtSummary) {
+                                        if (options[answerIndex].type === 'input'){
+                                            this.setState({ payableAmount: '', productName: options[answerIndex].aside, checkoutModalShow: true }); 
+                                        }
+                                        else {
+                                            this.setState({ payableAmount: options[answerIndex].value.substring(1), productName: options[answerIndex].aside, checkoutModalShow: true }); 
+                                        }
+                                        return; 
+                                    }
                                     this.checkAnswer(answerIndex, options[answerIndex].type == 'input' && currAnswer[answerIndex] == null ? '' : options[answerIndex].type == 'input' ? currAnswer[answerIndex] : options[answerIndex].value, () => {
                                         if (options[answerIndex].type != 'input' && !questionObj.multiple) this.nextQuestionHandler();
                                     });
@@ -384,7 +411,11 @@ export class DynamicForm extends Component {
                     </Modal.Header>
                     <Modal.Body>
                         <div>To: <span class="">{this.state.productName}</span></div>
-                        <div>Amount = <span class="subheader">${this.state.payableAmount}</span></div>
+                        <div>Amount = <span class="subheader">$
+                            {this.state.productName === 'Offset my emissions' ?
+                               <input value={this.state.payableAmount} onChange={this.handleTyping} type='text' autoFocus/> :
+                                this.state.payableAmount }
+                            </span></div>
                     </Modal.Body>
                     <Modal.Footer>
                         {this.state.connectionError &&
