@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import './DynamicForm.scss'
 
 import { CarbonData } from './CarbonData'
+import CheckoutForm from './CheckoutForm'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLongArrowAltLeft, faLongArrowAltRight, faQuestionCircle } from '@fortawesome/free-solid-svg-icons'
@@ -19,6 +20,7 @@ import Modal from 'react-bootstrap/Modal'
 import Spinner from 'react-bootstrap/Spinner'
 
 import { loadStripe } from "@stripe/stripe-js";
+import { Elements } from "@stripe/react-stripe-js";
 
 const stripePromise = loadStripe("pk_test_TYooMQauvdEDq54NiTphI7jx");
 
@@ -42,7 +44,8 @@ export class DynamicForm extends Component {
             productName: "Test",
             clickedCheckoutConfirm: false,
             connectionError: false,
-            slideAnimation: true
+            slideAnimation: true,
+            showCheckout: false
         }
     }
 
@@ -238,6 +241,12 @@ export class DynamicForm extends Component {
         }
     }
 
+    handleConfirmPayment = () => {
+        this.setState({
+            showCheckout: true
+        })
+    }
+
     render() {
         var { question, options, path, currAnswer, disabled, isAtSummary, carbonScores } = this.state
         currAnswer = currAnswer.length == 0 ? Array.from(Array(options.length), () => null) : currAnswer
@@ -416,12 +425,16 @@ export class DynamicForm extends Component {
                                <input value={this.state.payableAmount} onChange={this.handleTyping} type='text' autoFocus/> :
                                 this.state.payableAmount }
                             </span></div>
+                            {this.state.showCheckout &&
+                            <Elements stripe={stripePromise}>
+                                <CheckoutForm />
+                            </Elements>}
                     </Modal.Body>
                     <Modal.Footer>
                         {this.state.connectionError &&
                             <div class="error-text">Oops! That errored out. Please click again.</div>
                         }
-                        <Button className={'action-button'} disabled={this.state.clickedCheckoutConfirm} variant="success" onClick={() => { this.overToStripe(); /*this.setState({ checkoutModalShow: false });*/ }}>
+                        <Button className={'action-button'} disabled={this.state.clickedCheckoutConfirm} variant="success" onClick={this.handleConfirmPayment}>
                             CONFIRM
                             {!this.state.clickedCheckoutConfirm &&
                                 <FontAwesomeIcon className={'nudge-right-l'} icon={faLongArrowAltRight} />
