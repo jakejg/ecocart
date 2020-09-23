@@ -1,11 +1,11 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "98442985e16ec66348abca6b416e323b",
+    "revision": "fb2536f9a215b6d8db871d9723c339bc",
     "url": "/ecocart/index.html"
   },
   {
-    "revision": "607b4fd83ab84ccc694a",
-    "url": "/ecocart/static/css/main.98997802.chunk.css"
+    "revision": "f16b84766dfab2646fdb",
+    "url": "/ecocart/static/css/main.98c18666.chunk.css"
   },
   {
     "revision": "565217722ad2299fa91b",
@@ -16,20 +16,20 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/ecocart/static/js/2.16fd21b4.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "607b4fd83ab84ccc694a",
-    "url": "/ecocart/static/js/main.e02787d6.chunk.js"
+    "revision": "f16b84766dfab2646fdb",
+    "url": "/ecocart/static/js/main.43ad0d37.chunk.js"
   },
   {
     "revision": "9e3596c256c8349058a5",
     "url": "/ecocart/static/js/runtime-main.55ccef53.js"
   },
   {
-    "revision": "a87721b945a8039392bcf8a568cc5939",
-    "url": "/ecocart/static/media/airplane.a87721b9.png"
+    "revision": "9a602c73cdf2287d1a1e02978d876c7a",
+    "url": "/ecocart/static/media/airplane.9a602c73.png"
   },
   {
-    "revision": "04f8ab9eeacb865b5aa81bb9a05d3231",
-    "url": "/ecocart/static/media/car.04f8ab9e.png"
+    "revision": "d844011385fffaffdd64abffbccbb67d",
+    "url": "/ecocart/static/media/car.d8440113.png"
   },
   {
     "revision": "bfc48df3efbc003f369b28cfbe5915a6",
@@ -60,16 +60,16 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/ecocart/static/media/loading.46d039d8.png"
   },
   {
-    "revision": "d4b8cd6e89b6c593ea0654851832b878",
-    "url": "/ecocart/static/media/location.d4b8cd6e.png"
-  },
-  {
     "revision": "18f2d56de1b8519048e9b48f517b2d62",
     "url": "/ecocart/static/media/new_stuff.18f2d56d.png"
   },
   {
     "revision": "79f8ec460e0b11cbbff927a3ba6ba8b5",
     "url": "/ecocart/static/media/people_count.79f8ec46.png"
+  },
+  {
+    "revision": "01e4fac17da17427e70ba2ece92916ec",
+    "url": "/ecocart/static/media/pin.01e4fac1.png"
   },
   {
     "revision": "b91226ea7f390f6eb2d64ea8b25b2f9f",
