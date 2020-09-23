@@ -31,7 +31,7 @@ export const CarbonData = [
     {
         "condition": "prevSelections[0] == 'Car'",
         "question": "Is your car electric?",
-        "icon": "car",
+        "icon": "car_electric",
         "multiple": false,
         "options": [
             {
@@ -48,7 +48,7 @@ export const CarbonData = [
     },
     {
         "question": "Where do you usually go?",
-        "icon": "location",
+        "icon": "pin",
         "multiple": false,
         "options": [
             {
