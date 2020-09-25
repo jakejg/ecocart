@@ -52,3 +52,9 @@ $checkout-content-rounded-edges: 5px;
         }
     }
 }
+
+@media (max-width: 700px){
+    .home {
+        margin: 3px;
+    }
+}

@@ -13,7 +13,7 @@ $question-image-width: 10rem;
 $options-border: 2px solid $option-outline;
 $options-border-selected: 2px solid $option-outline-selected;
 $option-input-height: 2rem;
-$option-input-width: 5rem;
+$option-input-width: 25px;
 $options-round-edges: 8px;
 
 // progress bar specs
@@ -83,19 +83,21 @@ $option-fill-stats: white;
     }
 
     .option-aside {
+        display: inline;
         color: $option-aside;
         font-size: $subheader-font-size;
         font-weight: $font-normal;
     }
 
     .option-input {
+        display: inline;
         background-color: transparent;
         border: none;
         border-bottom: 1px solid black;
         width: $option-input-width;
         height: $option-input-height;
         outline: none;
-        margin-right: $icon-text-spacing;
+        margin-left: -25px;
     }
 
     .option-input-only {
@@ -229,4 +231,8 @@ $option-fill-stats: white;
 
 .main-text {
     text-align: center;
+}
+
+.option-input{
+    // width: 10px;
 }
