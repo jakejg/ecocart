@@ -103,6 +103,7 @@ $option-fill-stats: white;
     .option-input-only {
         @extend .option-input;
         width: max-content;
+        margin-left: 0px;
     }
 
     @keyframes animate-option-selection {
@@ -180,7 +181,7 @@ $option-fill-stats: white;
     } 
 }
 
-@media (max-width: 400px){
+@media (max-width: 500px){
     .form{
         max-width: 100%;
     }
@@ -231,8 +232,4 @@ $option-fill-stats: white;
 
 .main-text {
     text-align: center;
-}
-
-.option-input{
-    // width: 10px;
 }
