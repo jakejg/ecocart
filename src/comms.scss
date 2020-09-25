@@ -54,7 +54,13 @@ body {
 .boldface-link {
     text-decoration: underline;
     font-weight: $font-heavy;
+    color: white;
 }
+
+.boldface-link:hover {
+    color: white;
+}
+
 
 // -------------
 
