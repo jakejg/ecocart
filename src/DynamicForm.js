@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import './DynamicForm.scss'
 
-import { CarbonData } from './CarbonData'
+import { CarbonData } from './CarbonData';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLongArrowAltLeft, faLongArrowAltRight, faQuestionCircle } from '@fortawesome/free-solid-svg-icons'
@@ -334,19 +334,20 @@ export class DynamicForm extends Component {
                             </div>
                         </div>
                         <div className={'summary-tagline'}>
-                            Join the fight against Climate Change by offsetting your carbon footprint
-                            <OverlayTrigger
-                                key={'top'}
-                                trigger="click"
-                                placement={'top'}
-                                overlay={
-                                    <Tooltip id={'tooltip-top'} className={'tooltip-top'}>
-                                        Offset your carbon footprint by heping protect the <a className={'boldface-link'} href="https://app.ecocart.io/project/forest-protection" target="_blank">Tri-City Forest</a>
-                                    </Tooltip>
-                                }
-                            >
-                                <FontAwesomeIcon className={'nudge-right'} icon={faQuestionCircle} />
-                            </OverlayTrigger>
+                            <b>Join the fight against Climate Change by offsetting your carbon footprint</b>
+                               <OverlayTrigger
+                                    key={'top'}
+                                    trigger={['hover', 'focus']}
+                                    placement={'top'}
+                                    delay={{show: 0, hide: 2000}}
+                                    overlay={
+                                        <Tooltip id={'tooltip-top'} className={'tooltip-top'}>
+                                            Offset your carbon footprint by heping protect the <a className={'boldface-link'} href="https://app.ecocart.io/project/forest-protection" target="_blank">Tri-City Forest</a>
+                                        </Tooltip>
+                                    }
+                                    >
+                                    <FontAwesomeIcon className={'nudge-right icon'} icon={faQuestionCircle}/>
+                                </OverlayTrigger>
                         </div>
                     </div>
                 }
