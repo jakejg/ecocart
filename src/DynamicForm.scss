@@ -9,6 +9,7 @@ $option-aside: #595959;
 $back-button-color: #BFBFBF;
 
 $question-image-height: 10rem;
+$question-image-width: 10rem;
 $options-border: 2px solid $option-outline;
 $options-border-selected: 2px solid $option-outline-selected;
 $option-input-height: 2rem;
@@ -36,7 +37,7 @@ $option-fill-stats: white;
     margin: 0 auto;
 
     .question-image {
-        // width: $question-image-width;
+        width: $question-image-width;
         height: $question-image-height;
     }
     .question-enter, .question-appear {
