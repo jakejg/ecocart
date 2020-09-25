@@ -139,7 +139,7 @@ export const CarbonData = [
         ]
     },
     {
-        "question": "Got it,how many people live there?",
+        "question": "Got it, how many people live there?",
         "icon": "people_count",
         "multiple": false,
         "subtext": "(not including fluffy)",
@@ -152,9 +152,10 @@ export const CarbonData = [
         ]
     },
     {
-        "question": "Where do you live? I swear we aren't creepy.",
+        "question": "Where do you live? ",
         "icon": "live",
         "multiple": false,
+        "subtext": "I swear we aren't creepy",
         "options": [
             {
                 "type": "text",
@@ -199,7 +200,7 @@ export const CarbonData = [
         ]
     },
     {
-        "question": "About how much stuff do you order online",
+        "question": "About how much stuff do you order online?",
         "icon": "stuff_count",
         "multiple": false,
         "options": [
@@ -230,7 +231,7 @@ export const CarbonData = [
         ]
     },
     {
-        "question": "When do you get new stuff",
+        "question": "When do you get new stuff?",
         "icon": "new_stuff",
         "multiple": false,
         "options": [
@@ -252,7 +253,7 @@ export const CarbonData = [
         ]
     },
     {
-        "question": "What kind of stuff",
+        "question": "What kind of stuff?",
         "icon": "stuff_type",
         "multiple": false,
         "options": [
