@@ -256,13 +256,13 @@ export class DynamicForm extends Component {
                 },
                 {
                     "type": "text",
-                    "value": '$' + (totalScore * 0.9).toFixed(2),
-                    "aside": "Offset my emissions last month"
+                    "value": '$' + (totalScore * 0.9 * 3).toFixed(2),
+                    "aside": "Offset my emissions last 3 months"
                 },
                 {
                     "type": "text",
-                    "value": '$' + (totalScore * 0.9 * 3).toFixed(2),
-                    "aside": "Offset my emissions last 3 months"
+                    "value": '$' + (totalScore * 0.9).toFixed(2),
+                    "aside": "Offset my emissions last month"
                 },
                 {
                     "type": "input",
