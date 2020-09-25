@@ -7,7 +7,7 @@ $checkout-overlay-shade: #000000a0;
 $checkout-content-rounded-edges: 5px;
 
 .home {
-    min-height: 100vh;
+    min-height: 90vh;
     background-image: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)),
         url("./assets/images/loading.png");
     background-color: $summary-shade;
@@ -18,7 +18,7 @@ $checkout-content-rounded-edges: 5px;
     background-repeat: no-repeat;
     border: solid grey 2px;
     border-radius: 20px;
-    margin: 10px;
+    margin: 50px 150px 20px 150px;
     overflow: hidden;
 
     .home-content {
@@ -32,6 +32,7 @@ $checkout-content-rounded-edges: 5px;
             padding: 15px;
         }
     }
+
 
     .checkout-overlay {
         position: absolute;
@@ -50,5 +51,11 @@ $checkout-content-rounded-edges: 5px;
             margin: 0 auto;
             align-self: center;
         }
+    }
+}
+
+@media (max-width: 700px){
+    .home {
+        margin: 3px;
     }
 }

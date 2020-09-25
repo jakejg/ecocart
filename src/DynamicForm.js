@@ -427,7 +427,7 @@ export class DynamicForm extends Component {
                             </span></div>
                             {this.state.showCheckout &&
                             <Elements stripe={stripePromise}>
-                                <CheckoutForm />
+                                <CheckoutForm item={{name: this.state.productName, amount: this.state.payableAmount}}/>
                             </Elements>}
                     </Modal.Body>
                     <Modal.Footer>

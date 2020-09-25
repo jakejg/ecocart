@@ -5,7 +5,7 @@ import {
     useElements
 } from "@stripe/react-stripe-js";
 
-const CheckoutForm = ({ items }) => {
+const CheckoutForm = ({ item }) => {
     const [succeeded, setSucceeded] = useState(false);
     const [error, setError] = useState(null);
     const [processing, setProcessing] = useState('');
@@ -21,7 +21,7 @@ const CheckoutForm = ({ items }) => {
             headers: {
               "Content-Type": "application/json"
             },
-            body: JSON.stringify({items: [{ id: "xl-tshirt" }]})
+            body: JSON.stringify({item})
         })
         .then(res => {
             return res.json();
