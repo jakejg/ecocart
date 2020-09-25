@@ -304,6 +304,8 @@ export class DynamicForm extends Component {
                             {questionObj.multiple &&
                                 <div class="text-left nudge-down subheader">Select multiple.</div>
                             }
+                            {questionObj.subtext &&
+                                <div class="text-left nudge-down subheader">{questionObj.subtext}</div>}
                         </Col>
                     </Row>
                     : <div>

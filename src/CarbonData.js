@@ -116,9 +116,10 @@ export const CarbonData = [
         ]
     },
     {
-        "question": "What's your diet like? Yes, food has a carbon footprint too.",
+        "question": "What's your diet like?",
         "icon": "diet_type",
         "multiple": false,
+        "subtext": "Yes, food has a carbon footprint too",
         "options": [
             {
                 "type": "text",
@@ -138,9 +139,10 @@ export const CarbonData = [
         ]
     },
     {
-        "question": "Got it,how many people live there (not including fluffy)?",
+        "question": "Got it,how many people live there?",
         "icon": "people_count",
         "multiple": false,
+        "subtext": "(not including fluffy)",
         "options": [
             {
                 "type": "input",
