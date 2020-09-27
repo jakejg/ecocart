@@ -106,7 +106,7 @@ export class DynamicForm extends Component {
                 })
             }
         // wait for exit transition to finish, before setting state to start entrance transition
-        setTimeout(wait.bind(this), 700)
+        setTimeout(wait.bind(this), 1700)
         
     }
 
@@ -291,7 +291,7 @@ export class DynamicForm extends Component {
                 <CSSTransition 
                  in={this.state.slideAnimation}
                  classNames="question"
-                 timeout={700}
+                 timeout={1700}
                  appear
                  >
                 <div>

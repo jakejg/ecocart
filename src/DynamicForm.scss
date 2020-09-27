@@ -46,12 +46,12 @@ $option-fill-stats: white;
     
     .question-enter-active, .question-appear-active {
         transform: translateY(0px);
-        transition: all 700ms;
+        transition: all 700ms
     }
 
     .question-exit-active {
         transform: translateY(1000px);
-        transition: all 700ms;
+        transition: all 700ms 1000ms;
     }
 
     .header {
