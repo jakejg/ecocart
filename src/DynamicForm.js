@@ -208,7 +208,8 @@ export class DynamicForm extends Component {
     handleSubmit = () => {
         this.setState({
             currAnswer: [],
-            isAtSummary: true
+            isAtSummary: true,
+            disabled: true
         })
         // this.props.handleSubmit()
     }
@@ -355,15 +356,12 @@ export class DynamicForm extends Component {
                     {options.length != 1
                         ? Object.keys(options).map(answerIndex =>
                             <Card key={`${path[path.length - 1]}${answerIndex}`} className={`nudge-down options ${currAnswer[answerIndex] != null ? "options-selected" : ''} ${isAtSummary ? "options-stats" : ''}`}
-                                onClick={() => {
-                                    if (this.state.isAtSummary) {
-                                        if (options[answerIndex].type === 'input'){
-                                            this.setState({ payableAmount: '', productName: options[answerIndex].aside, checkoutModalShow: true }); 
-                                        }
-                                        else {
-                                            this.setState({ payableAmount: options[answerIndex].value.substring(1), productName: options[answerIndex].aside, checkoutModalShow: true }); 
-                                        }
-                                        return; 
+                                onClick={(event) => {
+                                   
+                                    if (this.state.isAtSummary && options[answerIndex].type !== 'input') {
+                                        this.checkAnswer(answerIndex, options[answerIndex].type == 'input' && currAnswer[answerIndex] == null ? '' : options[answerIndex].type == 'input' ? currAnswer[answerIndex] : options[answerIndex].value, () => {});
+                                        this.setState({ payableAmount: options[answerIndex].value.substring(1), productName: options[answerIndex].aside});
+                                    return;
                                     }
                                     this.checkAnswer(answerIndex, options[answerIndex].type == 'input' && currAnswer[answerIndex] == null ? '' : options[answerIndex].type == 'input' ? currAnswer[answerIndex] : options[answerIndex].value, () => {
                                         if (options[answerIndex].type != 'input' && !questionObj.multiple) this.nextQuestionHandler();
@@ -390,7 +388,6 @@ export class DynamicForm extends Component {
                         </div>
                     }
                 </div>
-                {!isAtSummary &&
                     <Row className={'nudge-down-l'}>
                         <Col className={'text-left back-col'}>
                             {path.length > 1 &&
@@ -402,12 +399,11 @@ export class DynamicForm extends Component {
                         </Col>
                         <Col className={'text-right next-col'}>
                             <Button className={'action-button'} disabled={this.state.disabled} onClick={this.nextQuestionHandler} variant="success">
-                                NEXT
+                                {isAtSummary ? "Offset my carbon footprint" : "NEXT"}
                                 <FontAwesomeIcon className={'nudge-right-l'} icon={faLongArrowAltRight} />
                             </Button>
                         </Col>
                     </Row>
-                }
                 </div>
                 </CSSTransition>
                 <Modal show={this.state.checkoutModalShow} onHide={() => this.setState({ checkoutModalShow: false })} size={'lg'} centered>
