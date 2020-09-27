@@ -389,6 +389,7 @@ export class DynamicForm extends Component {
                     }
                 </div>
                     <Row className={'nudge-down-l'}>
+                        {!isAtSummary &&
                         <Col className={'text-left back-col'}>
                             {path.length > 1 &&
                                 <Button className={'action-button back-button'} onClick={this.prevQuestionHandler} variant="success">
@@ -396,7 +397,7 @@ export class DynamicForm extends Component {
                                     BACK
                                 </Button>
                             }
-                        </Col>
+                        </Col>}
                         <Col className={'text-right next-col'}>
                             <Button className={'action-button'} disabled={this.state.disabled} onClick={this.nextQuestionHandler} variant="success">
                                 {isAtSummary ? "Offset my carbon footprint" : "NEXT"}
