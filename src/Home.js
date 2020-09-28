@@ -6,6 +6,8 @@ import './Home.scss'
 import DynamicForm from './DynamicForm'
 import Intro from './Intro'
 import PaymentResult from './PaymentResult'
+import Checkout from './Checkout';
+import history from './history';
 
 export class Home extends Component {
 
@@ -24,11 +26,12 @@ export class Home extends Component {
             <div className={'home'} style={this.state.isAtSummary ? { backgroundImage: 'none' } : {}}>
                 <div className={'home-content'}>
                     {
-                        <Router basename="/">
+                        <Router basename="/" history={history}>
                             <Switch>
                                 <Route exact path="/" component={Intro} />
-                                <Route path="/form" component={DynamicForm} />
-                                <Route path="/:yayOrNay" component={PaymentResult} />
+                                <Route exact path="/form" component={DynamicForm} />
+                                {/* <Route path="/:yayOrNay" component={PaymentResult} /> */}
+                                <Route exact path="/checkout" component={Checkout} />
                             </Switch>
                         </Router>
                     }

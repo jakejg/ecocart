@@ -1,12 +1,8 @@
 import React, { Component } from 'react'
 import './DynamicForm.scss'
 
-<<<<<<< HEAD
-import { CarbonData } from './CarbonData';
-=======
 import { CarbonData } from './CarbonData'
 import CheckoutForm from './CheckoutForm'
->>>>>>> custom-payment-flow
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLongArrowAltLeft, faLongArrowAltRight, faQuestionCircle } from '@fortawesome/free-solid-svg-icons'
@@ -25,6 +21,7 @@ import Spinner from 'react-bootstrap/Spinner'
 
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
+import { Redirect } from 'react-router-dom'
 
 const stripePromise = loadStripe("pk_test_TYooMQauvdEDq54NiTphI7jx");
 
@@ -252,6 +249,18 @@ export class DynamicForm extends Component {
         })
     }
 
+    handleNext = () => {
+        
+        if (this.state.isAtSummary){
+            console.log(this.state.isAtSummary)
+            this.props.history.push('/checkout')
+        }
+        else {
+            this.nextQuestionHandler();
+        }
+        
+    }
+
     render() {
         var { question, options, path, currAnswer, disabled, isAtSummary, carbonScores } = this.state
         currAnswer = currAnswer.length == 0 ? Array.from(Array(options.length), () => null) : currAnswer
@@ -412,7 +421,7 @@ export class DynamicForm extends Component {
                             }
                         </Col>}
                         <Col className={'text-right next-col'}>
-                            <Button className={'action-button'} disabled={this.state.disabled} onClick={this.nextQuestionHandler} variant="success">
+                            <Button className={'action-button'} disabled={this.state.disabled} onClick={this.handleNext} variant="success">
                                 {isAtSummary ? "Offset my carbon footprint" : "NEXT"}
                                 <FontAwesomeIcon className={'nudge-right-l'} icon={faLongArrowAltRight} />
                             </Button>

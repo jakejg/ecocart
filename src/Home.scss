@@ -7,11 +7,7 @@ $checkout-overlay-shade: #000000a0;
 $checkout-content-rounded-edges: 5px;
 
 .home {
-<<<<<<< HEAD
     min-height: 95vh;
-=======
-    min-height: 90vh;
->>>>>>> custom-payment-flow
     background-image: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)),
         url("./assets/images/loading.png");
     background-color: $summary-shade;
@@ -24,11 +20,7 @@ $checkout-content-rounded-edges: 5px;
     background-repeat: no-repeat;
     border: solid grey 2px;
     border-radius: 20px;
-<<<<<<< HEAD
     margin: 10px 150px 10px 150px;
-=======
-    margin: 50px 150px 20px 150px;
->>>>>>> custom-payment-flow
     overflow: hidden;
 
     .home-content {
