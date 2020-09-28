@@ -281,5 +281,5 @@ export const CarbonData = [
 //                 "score": "prevScore*1.5"
 //             }
 //         ]
-//     },
+    // },
 ]

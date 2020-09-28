@@ -252,8 +252,10 @@ export class DynamicForm extends Component {
     handleNext = () => {
         
         if (this.state.isAtSummary){
-            console.log(this.state.isAtSummary)
-            this.props.history.push('/checkout')
+            this.setState({
+                showCheckout: true
+            })
+            // this.props.history.push(`/checkout?amount=${this.state.payableAmount}`)
         }
         else {
             this.nextQuestionHandler();
@@ -297,7 +299,12 @@ export class DynamicForm extends Component {
             trees = Math.round(totalScore * 4.41).toLocaleString()
             homes = Math.round(totalScore * 0.4).toLocaleString()
         }
-
+        if (this.state.showCheckout){
+            return <Redirect to={{
+                pathname: "/checkout",
+                state: this.state.payableAmount
+              }}/>
+        }
         return (
             <>
             {!isAtSummary &&
@@ -429,7 +436,7 @@ export class DynamicForm extends Component {
                     </Row>
                 </div>
                 </CSSTransition>
-                <Modal show={this.state.checkoutModalShow} onHide={() => this.setState({ checkoutModalShow: false })} size={'lg'} centered>
+                {/* <Modal show={this.state.checkoutModalShow} onHide={() => this.setState({ checkoutModalShow: false })} size={'lg'} centered>
                     <Modal.Header closeButton>
                         <Modal.Title>Awesome! Would you like to confirm payment?</Modal.Title>
                     </Modal.Header>
@@ -463,9 +470,10 @@ export class DynamicForm extends Component {
                         </Button>
                         <Button variant="primary" onClick={() => this.setState({ checkoutModalShow: false })}>
                             Save Changes
-                        </Button> */}
-                    </Modal.Footer>
-                </Modal>
+                        </Button> */
+                    /* </Modal.Footer>
+                </Modal> */}
+
 
             </div>
         </>
