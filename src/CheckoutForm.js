@@ -4,6 +4,13 @@ import {
     useStripe,
     useElements
 } from "@stripe/react-stripe-js";
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+
+import CartItem from './CartItem';
+import './checkoutForm.scss'
+
+
 
 const CheckoutForm = ({ amount }) => {
     const [succeeded, setSucceeded] = useState(false);
@@ -48,66 +55,88 @@ const CheckoutForm = ({ amount }) => {
         }
     };
     const handleChange = async (event) => {
-      // Listen for changes in the CardElement
-      // and display any errors as the customer types their card details
-      setDisabled(event.empty);
-      setError(event.error ? event.error.message : "");
+        // Listen for changes in the CardElement
+        // and display any errors as the customer types their card details
+        setDisabled(event.empty);
+        setError(event.error ? event.error.message : "");
     };
 
     const handleSubmit = async (event) => {
-      event.preventDefault();
-      setProcessing(true);
-      const payload = await stripe.confirmCardPayment(clientSecret, {
-        payment_method: {
-          card: elements.getElement(CardElement)
+        event.preventDefault();
+        setProcessing(true);
+        const payload = await stripe.confirmCardPayment(clientSecret, {
+            payment_method: {
+              card: elements.getElement(CardElement)
+            }
+        });
+        if (payload.error) {
+            setError(`Payment failed ${payload.error.message}`);
+            setProcessing(false);
+        } else {
+            setError(null);
+            setProcessing(false);
+            setSucceeded(true);
         }
-      });
-      if (payload.error) {
-        setError(`Payment failed ${payload.error.message}`);
-        setProcessing(false);
-      } else {
-        setError(null);
-        setProcessing(false);
-        setSucceeded(true);
-      }
     };
     return (
-      <form id="payment-form" onSubmit={handleSubmit}>
-        <CardElement id="card-element" options={cardStyle} onChange={handleChange} />
-        <button
-          disabled={processing || disabled || succeeded}
-          id="submit"
-        >
-          <span id="button-text">
-            {processing ? (
-              <div className="spinner" id="spinner"></div>
-            ) : (
-              "Pay"
-            )}
-          </span>
-        </button>
-        {/* Show any error that happens when processing the payment */}
-        {error && (
-          <div className="card-error" role="alert">
-            {error}
-          </div>
-        )}
-        {/* Show a success message upon completion */}
-        {succeeded && (
-          <div role="alert">
-          Payment succeeded!
+        <div className="checkout">
+            <Row xs="1" lg="2">
+                <Col>
+                    <form className="payment-form" onSubmit={handleSubmit}>
+                        <CardElement id="card-element" options={cardStyle} onChange={handleChange} />
+                        <button
+                            disabled={processing || disabled || succeeded}
+                            id="submit"
+                        >
+                            <span id="button-text">
+                                {processing ? (
+                                <div className="spinner" id="spinner"></div>
+                                ) : (
+                                 "Pay"
+                                )}
+                            </span>
+                        </button>
+                        {/* Show any error that happens when processing the payment */}
+                        {error && (
+                            <div className="card-error" role="alert">
+                                {error}
+                            </div>
+                        )}
+                        {/* Show a success message upon completion */}
+                        {succeeded && (
+                            <div role="alert">
+                            Payment succeeded!
+                        </div>
+                        )}
+                        {/* <p className={succeeded ? "result-message" : "result-message hidden"}> */}
+                          {/* Payment succeeded, see the result in your
+                          <a
+                            href={`https://dashboard.stripe.com/test/payments`}
+                          >
+                            {" "}
+                            Stripe dashboard.
+                          </a> Refresh the page to pay again. */}
+                        {/* </p> */}
+                    </form>
+                </Col>
+                <Col>
+                    <h5>Your Cart</h5>
+                    <ul className="cart-list">
+                        <CartItem 
+                        img={"tri-city-forest.jpg"} 
+                        title={"Carbon Offset"} 
+                        description={"Spruce forest in Massachusetts"}
+                        price={amount}/>
+                    </ul>
+                    <hr></hr>
+                    <div className="cart-total">
+                        <div>Total</div>
+                        <div>${amount}</div>
+                    </div>
+                </Col>
+            </Row>
         </div>
-        )}
-        {/* <p className={succeeded ? "result-message" : "result-message hidden"}> */}
-          {/* Payment succeeded, see the result in your
-          <a
-            href={`https://dashboard.stripe.com/test/payments`}
-          >
-            {" "}
-            Stripe dashboard.
-          </a> Refresh the page to pay again. */}
-        {/* </p> */}
-      </form>
+  
     );
 }
 

@@ -1,0 +1,42 @@
+.img-container{
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.cart-img{
+    margin: 0 auto;
+    margin-left: -30%;
+    height: 100%;
+}
+
+.cart-item{
+    margin-top:20px;
+    width: 100%;
+}
+
+.item-list {
+    list-style: none;
+    padding: 0px;
+    margin: 0px;
+}
+
+
+.img-col {
+    vertical-align: top;
+    width: 80px;
+    display: inline-block;
+
+}
+
+.list-col{
+    vertical-align: top;
+    display: inline-block;
+    margin-left: 10px;
+}
+
+.item-description {
+    font-size: 13px;
+    color: gray;
+}
