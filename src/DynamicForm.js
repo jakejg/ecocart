@@ -255,7 +255,6 @@ export class DynamicForm extends Component {
             this.setState({
                 showCheckout: true
             })
-            // this.props.history.push(`/checkout?amount=${this.state.payableAmount}`)
         }
         else {
             this.nextQuestionHandler();

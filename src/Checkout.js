@@ -7,9 +7,16 @@ const stripePromise = loadStripe("pk_test_TYooMQauvdEDq54NiTphI7jx");
 
 
 const Checkout = (props) => {
+    let amount = props.location.state;
+    if (!amount){
+        amount = JSON.parse(localStorage.getItem('amount'));
+    }
+    else{ 
+        localStorage.setItem('amount', JSON.stringify(props.location.state));
+    }
     return (
         <Elements stripe={stripePromise}>
-            <CheckoutForm amount={props.location.state}/>
+            <CheckoutForm amount={amount}/>
         </Elements>
     )
 }
