@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/ecocart/static/css/main.eee34e5b.chunk.css",
-    "main.js": "/ecocart/static/js/main.26529fde.chunk.js",
-    "main.js.map": "/ecocart/static/js/main.26529fde.chunk.js.map",
+    "main.css": "/ecocart/static/css/main.3e5d8d40.chunk.css",
+    "main.js": "/ecocart/static/js/main.215c25d3.chunk.js",
+    "main.js.map": "/ecocart/static/js/main.215c25d3.chunk.js.map",
     "runtime-main.js": "/ecocart/static/js/runtime-main.55ccef53.js",
     "runtime-main.js.map": "/ecocart/static/js/runtime-main.55ccef53.js.map",
-    "static/js/2.16fd21b4.chunk.js": "/ecocart/static/js/2.16fd21b4.chunk.js",
-    "static/js/2.16fd21b4.chunk.js.map": "/ecocart/static/js/2.16fd21b4.chunk.js.map",
+    "static/js/2.7515951a.chunk.js": "/ecocart/static/js/2.7515951a.chunk.js",
+    "static/js/2.7515951a.chunk.js.map": "/ecocart/static/js/2.7515951a.chunk.js.map",
     "index.html": "/ecocart/index.html",
-    "precache-manifest.e4001e07548c5c9346fe0aa7e9278e83.js": "/ecocart/precache-manifest.e4001e07548c5c9346fe0aa7e9278e83.js",
+    "precache-manifest.eabaa9196cc18271c8e6dbc83d2c3ecc.js": "/ecocart/precache-manifest.eabaa9196cc18271c8e6dbc83d2c3ecc.js",
     "service-worker.js": "/ecocart/service-worker.js",
-    "static/css/main.eee34e5b.chunk.css.map": "/ecocart/static/css/main.eee34e5b.chunk.css.map",
-    "static/js/2.16fd21b4.chunk.js.LICENSE.txt": "/ecocart/static/js/2.16fd21b4.chunk.js.LICENSE.txt",
+    "static/css/main.3e5d8d40.chunk.css.map": "/ecocart/static/css/main.3e5d8d40.chunk.css.map",
+    "static/js/2.7515951a.chunk.js.LICENSE.txt": "/ecocart/static/js/2.7515951a.chunk.js.LICENSE.txt",
     "static/media/airplane.png": "/ecocart/static/media/airplane.9a602c73.png",
     "static/media/car.png": "/ecocart/static/media/car.d8440113.png",
     "static/media/car_electric.png": "/ecocart/static/media/car_electric.bfc48df3.png",
@@ -20,7 +20,7 @@
     "static/media/heating_freq.png": "/ecocart/static/media/heating_freq.64209071.png",
     "static/media/home.png": "/ecocart/static/media/home.b83b55e8.png",
     "static/media/live.png": "/ecocart/static/media/live.665b810c.png",
-    "static/media/loading.png": "/ecocart/static/media/loading.46d039d8.png",
+    "static/media/Home.scss": "/ecocart/static/media/loading.46d039d8.png",
     "static/media/new_stuff.png": "/ecocart/static/media/new_stuff.18f2d56d.png",
     "static/media/people_count.png": "/ecocart/static/media/people_count.79f8ec46.png",
     "static/media/pin.png": "/ecocart/static/media/pin.01e4fac1.png",
@@ -28,12 +28,13 @@
     "static/media/sprout_2.png": "/ecocart/static/media/sprout_2.faf311bf.png",
     "static/media/stuff_count.png": "/ecocart/static/media/stuff_count.14aada8e.png",
     "static/media/tree.png": "/ecocart/static/media/tree.45f0b417.png",
-    "static/media/tree_icon.png": "/ecocart/static/media/tree_icon.d1d79770.png"
+    "static/media/tree_icon.png": "/ecocart/static/media/tree_icon.d1d79770.png",
+    "static/media/tri-city-forest.jpg": "/ecocart/static/media/tri-city-forest.64dfc5f6.jpg"
   },
   "entrypoints": [
     "static/js/runtime-main.55ccef53.js",
-    "static/js/2.16fd21b4.chunk.js",
-    "static/css/main.eee34e5b.chunk.css",
-    "static/js/main.26529fde.chunk.js"
+    "static/js/2.7515951a.chunk.js",
+    "static/css/main.3e5d8d40.chunk.css",
+    "static/js/main.215c25d3.chunk.js"
   ]
 }
