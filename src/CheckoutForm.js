@@ -6,6 +6,7 @@ import {
 } from "@stripe/react-stripe-js";
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Spinner from 'react-bootstrap/Spinner';
 
 import CartItem from './CartItem';
 import './checkoutForm.scss'
@@ -37,23 +38,23 @@ const CheckoutForm = ({ amount }) => {
             setClientSecret(data.clientSecret);
         });
     }, []);
-    const cardStyle = {
-        style: {
-            base: {
-                color: "#32325d",
-                fontFamily: 'Arial, sans-serif',
-                fontSmoothing: "antialiased",
-                fontSize: "16px",
-                "::placeholder": {
-                  color: "#32325d"
-                }
-            },
-            invalid: {
-                color: "#fa755a",
-                iconColor: "#fa755a"
-            }
-        }
-    };
+    // const cardStyle = {
+    //     style: {
+    //         base: {
+    //             color: "#32325d",
+    //             fontFamily: 'Arial, sans-serif',
+    //             fontSmoothing: "antialiased",
+    //             fontSize: "16px",
+    //             "::placeholder": {
+    //               color: "#32325d"
+    //             }
+    //         },
+    //         invalid: {
+    //             color: "#fa755a",
+    //             iconColor: "#fa755a"
+    //         }
+    //     }
+    // };
     const handleChange = async (event) => {
         // Listen for changes in the CardElement
         // and display any errors as the customer types their card details
@@ -83,14 +84,18 @@ const CheckoutForm = ({ amount }) => {
             <Row xs="1" lg="2">
                 <Col>
                     <form className="payment-form" onSubmit={handleSubmit}>
-                        <CardElement id="card-element" options={cardStyle} onChange={handleChange} />
+                        <CardElement id="card-element" onChange={handleChange} />
                         <button
                             disabled={processing || disabled || succeeded}
                             id="submit"
                         >
                             <span id="button-text">
                                 {processing ? (
-                                <div className="spinner" id="spinner"></div>
+                                <div className="spinner" id="spinner">
+                                    <Spinner animation="border" role="status">
+                                        <span className="sr-only">Loading...</span>
+                                    </Spinner>
+                                </div>
                                 ) : (
                                  "Pay"
                                 )}
