@@ -421,7 +421,7 @@ export class DynamicForm extends Component {
                         <Col className={'button-col'}>
                             {path.length > 1 &&
                                 <Button className={'back-button'}onClick={this.prevQuestionHandler} variant="success">
-                                    <span>
+                                    <span className={'button-text'}>
                                     <FontAwesomeIcon className='left-arrow' icon={faLongArrowAltLeft} />
                                     BACK
                                     </span>
@@ -430,7 +430,7 @@ export class DynamicForm extends Component {
                         </Col>}
                         <Col className={'button-col'}>
                             <Button className={'next-button'} disabled={this.state.disabled} onClick={this.handleNext} variant="success">
-                                <span>{isAtSummary ? "Offset my carbon footprint" : "NEXT"}
+                                <span className={'button-text'}>{isAtSummary ? "Offset my carbon footprint" : "NEXT"}
                                 <FontAwesomeIcon className='right-arrow' icon={faLongArrowAltRight} />
                                 </span>
                             </Button>
