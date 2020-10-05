@@ -416,20 +416,23 @@ export class DynamicForm extends Component {
                         </div>
                     }
                 </div>
-                    <Row className={'nudge-down-l'}>
+                    <Row className={'nudge-down-l click-row'}>
                         {!isAtSummary &&
-                        <Col className={'text-left back-col'}>
+                        <Col className={'button-col'}>
                             {path.length > 1 &&
-                                <Button className={'action-button back-button'} onClick={this.prevQuestionHandler} variant="success">
-                                    <FontAwesomeIcon className={'nudge-left-l'} icon={faLongArrowAltLeft} />
+                                <Button className={'back-button'}onClick={this.prevQuestionHandler} variant="success">
+                                    <span>
+                                    <FontAwesomeIcon className='left-arrow' icon={faLongArrowAltLeft} />
                                     BACK
+                                    </span>
                                 </Button>
                             }
                         </Col>}
-                        <Col className={'text-right next-col'}>
-                            <Button className={'action-button'} disabled={this.state.disabled} onClick={this.handleNext} variant="success">
-                                {isAtSummary ? "Offset my carbon footprint" : "NEXT"}
-                                <FontAwesomeIcon className={'nudge-right-l'} icon={faLongArrowAltRight} />
+                        <Col className={'button-col'}>
+                            <Button className={'next-button'} disabled={this.state.disabled} onClick={this.handleNext} variant="success">
+                                <span>{isAtSummary ? "Offset my carbon footprint" : "NEXT"}
+                                <FontAwesomeIcon className='right-arrow' icon={faLongArrowAltRight} />
+                                </span>
                             </Button>
                         </Col>
                     </Row>

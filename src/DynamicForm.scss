@@ -177,10 +177,23 @@ $option-fill-stats: white;
             flex-direction: column;
         }
     }
+    .next-button {
+        width: 90%;
+        white-space: nowrap;
+        box-sizing: border-box;
+        border: none;
+    }
 
     .back-button {
+        @extend .next-button;     
+        box-sizing: border-box;
+        margin-left: 0px;
         background-color: $back-button-color;
-        border: none;
+   
+    }
+
+    .button-col {
+        padding: 0px;
     }
 
     .summary-tagline {
@@ -197,12 +210,6 @@ $option-fill-stats: white;
     }
     .action-button {
         transform: scale(.7);
-    }
-    .back-col {
-        margin-left: -30px;
-    }
-    .next-col {
-        margin-right: 30px;
     }
     
     .text {

@@ -80,20 +80,27 @@ body {
     font-weight: $font-heavy;
 }
 
-.action-button {
-    font-weight: $font-heavier;
-}
+
 
 .error-text {
     color: red;
 }
 
+.right-arrow {
+    margin-left: 10px;
+    margin-top: 5px;
+}
+
+.left-arrow {
+    margin-right: 10px;
+    margin-top: 5px;
+}
+
 // overrides
 
 .btn-success {
-    padding: $displacement $displacement * 2;
+    padding: 1rem;
     // background-color: $green;
-    border-color: $green;
     font-size: $subheader-font-size;
     font-weight: $font-heavier;
 }
