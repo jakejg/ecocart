@@ -8,8 +8,9 @@ $option-fill-selected: #e2f0d9;
 $option-aside: #595959;
 $back-button-color: #BFBFBF;
 
-$question-image-height: 10rem;
-$question-image-width: 10rem;
+
+$question-image-height: 8rem;
+$question-image-width: 8rem;
 $options-border: 2px solid $option-outline;
 $options-border-selected: 2px solid $option-outline-selected;
 $option-input-height: 2rem;
@@ -33,7 +34,7 @@ $option-fill-stats: white;
 
 
 .form {
-    max-width: 60%;
+    max-width: 50%;
     margin: 0 auto;
 
     .question-image {
@@ -107,8 +108,9 @@ $option-fill-stats: white;
     }
 
     .nudge-down-l {
-        max-width: 75%;
-        margin: 50px auto; 
+        max-width: 100%;
+        margin: auto; 
+        margin-bottom: 30px;
     }
 
     @keyframes animate-option-selection {
@@ -188,7 +190,7 @@ $option-fill-stats: white;
     } 
 }
 
-@media (max-width: 500px){
+@media (max-width: 600px){
     .form{
         max-width: 100%;
         margin: 0px;
