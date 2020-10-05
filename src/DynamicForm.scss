@@ -85,7 +85,7 @@ $option-fill-stats: white;
 
     .option-aside {
         display: inline;
-        color: $option-aside;
+        line-height: normal;
         font-size: $subheader-font-size;
         font-weight: $font-normal;
     }
@@ -98,7 +98,7 @@ $option-fill-stats: white;
         width: $option-input-width;
         height: $option-input-height;
         outline: none;
-        margin-left: -25px;
+        // margin-left: -25px;
     }
 
     .option-input-only {
@@ -207,19 +207,22 @@ $option-fill-stats: white;
     .form{
         max-width: 100%;
         margin: 0px;
+
+        .option-aside {
+        font-size: 1rem;
+    }
     }
     .button-text {
         font-size: 1rem;
     }
+   
     
     .text {
         display: block;
         font-size: 18px;
         line-height: 20px;
     }
-    .option-aside{
-        @extend .text;
-    }
+
     .home-content {
         padding: 0px;
     }
@@ -264,4 +267,8 @@ $option-fill-stats: white;
 .icon {
     color: $stat-background;
     font-size: 25px;
+}
+
+.money-label {
+    font-size: 1.2rem;
 }

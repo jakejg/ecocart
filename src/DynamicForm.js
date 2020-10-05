@@ -375,7 +375,7 @@ export class DynamicForm extends Component {
                                     delay={{show: 0, hide: 2000}}
                                     overlay={
                                         <Tooltip id={'tooltip-top'} className={'tooltip-top'}>
-                                            Offset your carbon footprint by heping protect the <a className={'boldface-link'} href="https://app.ecocart.io/project/forest-protection" target="_blank">Tri-City Forest</a>
+                                            Offset your carbon footprint by helping protect the <a className={'boldface-link'} href="https://ecocart.io/project/forest-protection/" target="_blank">Tri-City Forest</a>
                                         </Tooltip>
                                     }
                                     >
@@ -400,13 +400,16 @@ export class DynamicForm extends Component {
                                     });
                                 }} body>
                                 <Row>
-                                    <Col className={options[answerIndex].aside ? null : `main-text`}>
+                                    <Col className={options[answerIndex].aside ? 'b' : `main-text`}>
                                         <span className="text">{options[answerIndex].value}</span>
                                     </Col>
                                     {options[answerIndex].aside &&
-                                    <Col className={'text-right'}>
+                                    <Col className={'text-right b'}>
                                         {options[answerIndex].type == 'input' && currAnswer[answerIndex] != null &&
-                                            <input onClick={(event) => event.stopPropagation()} onChange={(event) => this.checkAnswer(answerIndex, event.target.value, () => { }, event.target)} autoFocus className={'option-input'} value={currAnswer[answerIndex]}></input>
+                                            <>
+                                            {this.state.isAtSummary && <span class='money-label'>$</span>}
+                                            <input id='custom-input' onClick={(event) => event.stopPropagation()} onChange={(event) => this.checkAnswer(answerIndex, event.target.value, () => { }, event.target)} autoFocus className={'option-input'} value={currAnswer[answerIndex]}></input>
+                                            </>
                                         }
                                         <span className={'option-aside'}>{options[answerIndex].aside}</span>
                                     </Col>
