@@ -111,7 +111,11 @@ export class DynamicForm extends Component {
             }
         // wait for exit transition to finish, before setting state to start entrance transition
         setTimeout(wait.bind(this), 1700)
-        
+
+        // set next button to disabled right away to prevent skipping a question.
+        this.setState({
+                    disabled: true,
+                })    
     }
 
     prevQuestionHandler = () => {
