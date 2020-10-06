@@ -25,18 +25,25 @@
 
 .img-col {
     vertical-align: top;
-    width: 80px;
     display: inline-block;
+    width: 20%; 
 
 }
 
 .list-col{
     vertical-align: top;
     display: inline-block;
-    margin-left: 10px;
+    width: 78%;
+
 }
 
 .item-description {
     font-size: 13px;
     color: gray;
+}
+
+@media (max-width: 500px){
+    .list-col{
+        width: 100%;
+    }
 }

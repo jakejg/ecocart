@@ -131,7 +131,7 @@ const CheckoutForm = ({ amount }) => {
                         <CartItem 
                         img={"tri-city-forest.jpg"} 
                         title={"Carbon Offset"} 
-                        description={"Spruce forest in Massachusetts"}
+                        description={"Your donation will help protect a Spruce forest in Massachusetts that captures over 100,000 metric tonnes of harmful carbon dioxide every year. This project also protects the habitat of a variety of threatened mammals, birds, and reptiles."}
                         price={amount}/>
                     </ul>
                     <hr></hr>
