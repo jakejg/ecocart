@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/ecocart/static/css/main.354345d6.chunk.css",
-    "main.js": "/ecocart/static/js/main.e567a98d.chunk.js",
-    "main.js.map": "/ecocart/static/js/main.e567a98d.chunk.js.map",
+    "main.js": "/ecocart/static/js/main.cd137f35.chunk.js",
+    "main.js.map": "/ecocart/static/js/main.cd137f35.chunk.js.map",
     "runtime-main.js": "/ecocart/static/js/runtime-main.55ccef53.js",
     "runtime-main.js.map": "/ecocart/static/js/runtime-main.55ccef53.js.map",
     "static/js/2.7515951a.chunk.js": "/ecocart/static/js/2.7515951a.chunk.js",
     "static/js/2.7515951a.chunk.js.map": "/ecocart/static/js/2.7515951a.chunk.js.map",
     "index.html": "/ecocart/index.html",
-    "precache-manifest.8d2b128b39abaa47677b587492babf76.js": "/ecocart/precache-manifest.8d2b128b39abaa47677b587492babf76.js",
+    "precache-manifest.de75c64c619d58695c9dd56955032b18.js": "/ecocart/precache-manifest.de75c64c619d58695c9dd56955032b18.js",
     "service-worker.js": "/ecocart/service-worker.js",
     "static/css/main.354345d6.chunk.css.map": "/ecocart/static/css/main.354345d6.chunk.css.map",
     "static/js/2.7515951a.chunk.js.LICENSE.txt": "/ecocart/static/js/2.7515951a.chunk.js.LICENSE.txt",
@@ -35,6 +35,6 @@
     "static/js/runtime-main.55ccef53.js",
     "static/js/2.7515951a.chunk.js",
     "static/css/main.354345d6.chunk.css",
-    "static/js/main.e567a98d.chunk.js"
+    "static/js/main.cd137f35.chunk.js"
   ]
 }
