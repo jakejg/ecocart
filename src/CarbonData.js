@@ -28,55 +28,55 @@ export const CarbonData = [
         ],
         "next": "1"
     },
-    {
-        "condition": "prevSelections[0] == 'Car'",
-        "question": "Is your car electric?",
-        "icon": "car_electric",
-        "multiple": false,
-        "options": [
-            {
-                "type": "text",
-                "value": "Yes",
-                "score": -3.1
-            },
-            {
-                "type": "text",
-                "value": "No",
-                "score": 0
-            }
-        ]
-    },
-    {
-        "question": "Where do you usually go?",
-        "icon": "pin",
-        "multiple": false,
-        "options": [
-            {
-                "type": "text",
-                "value": "Not far",
-                "aside": "~50 miles a week",
-                "score": -2.5
-            },
-            {
-                "type": "text",
-                "value": "Commute to work",
-                "aside": "~200 miles a week",
-                "score": 0
-            },
-            {
-                "type": "text",
-                "value": "I get around",
-                "aside": "~400 miles a week",
-                "score": 3.4
-            },
-            {
-                "type": "input",
-                "value": "Other",
-                "aside": "miles a week",
-                "score": "parseInt(value)*0.02"
-            }
-        ]
-    },
+    // {
+    //     "condition": "prevSelections[0] == 'Car'",
+    //     "question": "Is your car electric?",
+    //     "icon": "car_electric",
+    //     "multiple": false,
+    //     "options": [
+    //         {
+    //             "type": "text",
+    //             "value": "Yes",
+    //             "score": -3.1
+    //         },
+    //         {
+    //             "type": "text",
+    //             "value": "No",
+    //             "score": 0
+    //         }
+    //     ]
+    // },
+    // {
+    //     "question": "Where do you usually go?",
+    //     "icon": "pin",
+    //     "multiple": false,
+    //     "options": [
+    //         {
+    //             "type": "text",
+    //             "value": "Not far",
+    //             "aside": "~50 miles a week",
+    //             "score": -2.5
+    //         },
+    //         {
+    //             "type": "text",
+    //             "value": "Commute to work",
+    //             "aside": "~200 miles a week",
+    //             "score": 0
+    //         },
+    //         {
+    //             "type": "text",
+    //             "value": "I get around",
+    //             "aside": "~400 miles a week",
+    //             "score": 3.4
+    //         },
+    //         {
+    //             "type": "input",
+    //             "value": "Other",
+    //             "aside": "miles a week",
+    //             "score": "parseInt(value)*0.02"
+    //         }
+    //     ]
+    // },
     // {
     //     "question": "How often do you fly?",
     //     "icon": "airplane",

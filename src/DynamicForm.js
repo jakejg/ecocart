@@ -247,16 +247,17 @@ export class DynamicForm extends Component {
         }
     }
 
-    handleConfirmPayment = () => {
-        this.setState({
-            showCheckout: true
-        })
-    }
 
     handleNext = () => {
         
         if (this.state.isAtSummary){
+            // get selected amount to pay
+            let amount = this.state.currAnswer.find(val => val !== null)
+            if (amount.startsWith('$')){
+                amount = amount.substring(1);
+            }
             this.setState({
+                payableAmount: amount,
                 showCheckout: true
             })
         }
@@ -303,6 +304,7 @@ export class DynamicForm extends Component {
             homes = Math.round(totalScore * 0.4).toLocaleString()
         }
         if (this.state.showCheckout){
+            console.log(this.state.payableAmount)
             return <Redirect to={{
                 pathname: "/checkout",
                 state: this.state.payableAmount
