@@ -344,7 +344,7 @@ export class DynamicForm extends Component {
                         </Col>
                     </Row>
                     : <div>
-                        <div class="subheader">Your annual carbon emissions are:</div>
+                        <div class="subheader summary-header">Your annual carbon emissions are:</div>
                         <div className={'stats-container nudge-down'}>
                             <div class="stat-container">
                                 <img className={'stat-image'} src={require(`./assets/images/co2.png`)}></img>

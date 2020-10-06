@@ -143,6 +143,10 @@ $option-fill-stats: white;
     .card-body {
         padding: $displacement;
     }
+    
+    .summary-header{
+        margin-bottom: 25px;
+    }
 
     .stats-container {
         display: flex;
