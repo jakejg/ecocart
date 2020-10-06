@@ -46,7 +46,8 @@ export class DynamicForm extends Component {
             clickedCheckoutConfirm: false,
             connectionError: false,
             slideAnimation: true,
-            showCheckout: false
+            showCheckout: false,
+            answerSelected: false
         }
     }
 
@@ -106,7 +107,8 @@ export class DynamicForm extends Component {
                     currAnswer,
                     carbonScores,
                     disabled: true,
-                    slideAnimation: true
+                    slideAnimation: true,
+                    answerSelected: false
                 })
             }
         // wait for exit transition to finish, before setting state to start entrance transition
@@ -115,6 +117,7 @@ export class DynamicForm extends Component {
         // set next button to disabled right away to prevent skipping a question.
         this.setState({
                     disabled: true,
+                    answerSelected: true
                 })    
     }
 
@@ -398,7 +401,7 @@ export class DynamicForm extends Component {
                                     return;
                                     }
                                     this.checkAnswer(answerIndex, options[answerIndex].type == 'input' && currAnswer[answerIndex] == null ? '' : options[answerIndex].type == 'input' ? currAnswer[answerIndex] : options[answerIndex].value, () => {
-                                        if (options[answerIndex].type != 'input' && !questionObj.multiple) this.nextQuestionHandler();
+                                        if (options[answerIndex].type != 'input' && !questionObj.multiple && !this.state.answerSelected) this.nextQuestionHandler();
                                     });
                                 }} body>
                                 <Row>
