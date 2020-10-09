@@ -47,12 +47,13 @@ export class DynamicForm extends Component {
             connectionError: false,
             slideAnimation: true,
             showCheckout: false,
-            answerSelected: false
+            answerSelected: false,
+            subScores: []
         }
     }
 
     nextQuestionHandler = () => {
-        var { selectedAnswers, carbonScores, options, currAnswer, path } = this.state
+        var { selectedAnswers, carbonScores, options, currAnswer, path, subScores } = this.state
         this.setState({
             slideAnimation: false
         })
@@ -60,23 +61,41 @@ export class DynamicForm extends Component {
             console.log('nextQuestionHandler / currAnswer:', currAnswer);
 
             // computing score for this question
-            var score = 0
-            for (var i = 0; i < currAnswer.length; i++) {
-                var thisAnswer = currAnswer[i]
-                var thisAnswerScore = options[i].score
-                if (thisAnswer == null || thisAnswerScore == null) continue
-                if (typeof (thisAnswerScore) != 'string') score += thisAnswerScore
-                else if (thisAnswerScore.includes('value')) score += eval(thisAnswerScore.replace('value', thisAnswer))
-                else if (thisAnswerScore.includes('prevScore')) {
-                    console.log('Hi')
-                    score += eval(thisAnswerScore.replace('prevScore', carbonScores[carbonScores.length - 1]))
-                    console.log('Hello')
+            let score = 0;
+            for (let i = 0; i < currAnswer.length; i++) {
+                let thisAnswer = currAnswer[i];
+                let thisAnswerScore = options[i].score;
+                if (thisAnswer && thisAnswerScore) {
+                     
+                    if (typeof (thisAnswerScore) === 'string') {
+                        // if selected answer is a custom input replace
+                        if (thisAnswerScore.includes('value')) {
+                            thisAnswerScore = thisAnswerScore.replace('value', thisAnswer);
+                        }
+                        
+                        // if this score needs a previous subscore
+                        if (thisAnswerScore.includes('prevSubScore')){
+                            thisAnswerScore = thisAnswerScore.replace('prevSubScore', subScores[subScores.length - 1]);
+                        }
+                    }
+                    score += eval(thisAnswerScore);
                 }
-                else if (thisAnswerScore.includes('prevSelections')) score += eval(thisAnswerScore.replace('prevSelections', `'${selectedAnswers[selectedAnswers.length - 1]}'.split(',')`))
             }
-            carbonScores.push(score)
-            console.log('Score', carbonScores)
+            // if score is a subscore add it to subscore and add a placeholder 0 to carbonScores
+            // otherwise add it to carbonScores and add placeholder to subScores
+            let isSubScore = CarbonData[path[path.length - 1]].isSubScore;
+            if (isSubScore) {
+                subScores.push(score);
+                carbonScores.push(0);
+            }
+            else {
+                carbonScores.push(score);
+                subScores.push(0);
+            }
 
+            console.log("subscores", subScores)
+            console.log('Score', carbonScores)
+         
             selectedAnswers.push(currAnswer)  // commits currently selected answer
             console.log('Selected answers', selectedAnswers)
             currAnswer = []  // resets currently selected answer
@@ -122,10 +141,11 @@ export class DynamicForm extends Component {
     }
 
     prevQuestionHandler = () => {
-        var { selectedAnswers, carbonScores, currAnswer, path } = this.state
+        var { selectedAnswers, carbonScores, currAnswer, path, subScores } = this.state
 
         currAnswer = selectedAnswers.pop()  // moves back to previous question's answer in stack
         carbonScores.pop()  // moves score to previous state
+        subScores.pop() // moves subScore to previous state
         path.pop()  // moves to previous question
 
         this.setState({
@@ -279,6 +299,7 @@ export class DynamicForm extends Component {
         var emissions, trees, homes
         if (isAtSummary) {
             var totalScore = 0
+            console.log(carbonScores)
             for (let score of carbonScores) totalScore += score
             options = [
                 {
@@ -316,14 +337,14 @@ export class DynamicForm extends Component {
         return (
             <>
             {!isAtSummary &&
-                    <div class="progress-container">
-                        <div class="progress-text">{
+                    <div className="progress-container">
+                        <div className="progress-text">{
                             `${(disabled ? path[path.length - 1] : path[path.length - 1] + 1)} of ${CarbonData.length} answered`
                         }</div>
                         <ProgressBar now={(disabled ? path[path.length - 1] : path[path.length - 1] + 1) / CarbonData.length * 100} />
                     </div>
             }
-            <div class="form">
+            <div className="form">
             
                 <CSSTransition 
                  in={this.state.slideAnimation}
@@ -335,37 +356,37 @@ export class DynamicForm extends Component {
                 {!isAtSummary
                     ? <Row>
                         <Col md="6">
-                            <img class="question-image" src={require(`./assets/images/${questionObj.icon}.png`)}></img>
+                            <img className="question-image" src={require(`./assets/images/${questionObj.icon}.png`)}></img>
                         </Col>
                         <Col md="6" className={'flex-center'}>
-                            <div class="header">{question}</div>
+                            <div className="header">{question}</div>
                             {questionObj.multiple &&
-                                <div class="text-left nudge-down subheader">Select multiple.</div>
+                                <div className="text-left nudge-down subheader">Select multiple.</div>
                             }
                             {questionObj.subtext &&
-                                <div class="text-left nudge-down subheader">{questionObj.subtext}</div>}
+                                <div className="text-left nudge-down subheader">{questionObj.subtext}</div>}
                         </Col>
                     </Row>
                     : <div>
-                        <div class="subheader summary-header">Your annual carbon emissions are:</div>
+                        <div className="subheader summary-header">Your annual carbon emissions are:</div>
                         <div className={'stats-container nudge-down'}>
-                            <div class="stat-container">
+                            <div className="stat-container">
                                 <img className={'stat-image'} src={require(`./assets/images/co2.png`)}></img>
                                 <div className={'stat-value'}>{emissions}</div>
                                 <div>lbs of CO2</div>
                             </div>
-                            <div class="stat-separator">
+                            <div className="stat-separator">
                                 =
                         </div>
-                            <div class="stat-container nudge-right">
+                            <div className="stat-container nudge-right">
                                 <img className={'stat-image'} src={require(`./assets/images/tree_icon.png`)}></img>
                                 <div className={'stat-value'}>{trees}</div>
                                 <div>trees cut down</div>
                             </div>
-                            <div class="stat-separator">
+                            <div className="stat-separator">
                                 OR
                         </div>
-                            <div class="stat-container nudge-right">
+                            <div className="stat-container nudge-right">
                                 <img className={'stat-image'} src={require(`./assets/images/home.png`)}></img>
                                 <div className={'stat-value'}>{homes}</div>
                                 <div>homes powered</div>
@@ -412,7 +433,7 @@ export class DynamicForm extends Component {
                                     <Col className={'text-right b'}>
                                         {options[answerIndex].type == 'input' && currAnswer[answerIndex] != null &&
                                             <>
-                                            {this.state.isAtSummary && <span class='money-label'>$</span>}
+                                            {this.state.isAtSummary && <span className='money-label'>$</span>}
                                             <input id='custom-input' onClick={(event) => event.stopPropagation()} onChange={(event) => this.checkAnswer(answerIndex, event.target.value, () => { }, event.target)} autoFocus className={'option-input'} value={currAnswer[answerIndex]}></input>
                                             </>
                                         }
@@ -455,8 +476,8 @@ export class DynamicForm extends Component {
                         <Modal.Title>Awesome! Would you like to confirm payment?</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                        <div>To: <span class="">{this.state.productName}</span></div>
-                        <div>Amount = <span class="subheader">$
+                        <div>To: <span className="">{this.state.productName}</span></div>
+                        <div>Amount = <span className="subheader">$
                             {this.state.productName === 'Offset my emissions' ?
                                <input value={this.state.payableAmount} onChange={this.handleTyping} type='text' autoFocus/> :
                                 this.state.payableAmount }
@@ -468,7 +489,7 @@ export class DynamicForm extends Component {
                     </Modal.Body>
                     <Modal.Footer>
                         {this.state.connectionError &&
-                            <div class="error-text">Oops! That errored out. Please click again.</div>
+                            <div className="error-text">Oops! That errored out. Please click again.</div>
                         }
                         <Button className={'action-button'} disabled={this.state.clickedCheckoutConfirm} variant="success" onClick={this.handleConfirmPayment}>
                             CONFIRM

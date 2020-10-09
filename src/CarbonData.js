@@ -81,11 +81,13 @@ export const CarbonData = [
         "question": "How often do you fly?",
         "icon": "airplane",
         "multiple": false,
+        "isSubScore": true,
         "options": [
             {
                 "type": "input",
                 "value": "Type your answer here...",
-                "aside": "times a year"
+                "aside": "times a year",
+                "score" : "value"
             }
         ]
     },
@@ -99,19 +101,19 @@ export const CarbonData = [
                 "type": "text",
                 "value": "Across the world",
                 "aside": "2500+ miles",
-                "score": "parseInt(prevSelections[0])*1.6"
+                "score": "prevSubScore*1.6"
             },
             {
                 "type": "text",
                 "value": "Across the country",
                 "aside": "1000-2500 miles",
-                "score": "parseInt(prevSelections[0])*0.8"
+                "score": "prevSubScore*0.8"
             },
             {
                 "type": "text",
                 "value": "Not far",
                 "aside": "Less than 1000 miles",
-                "score": "parseInt(prevSelections[0])*0.3"
+                "score": "prevSubScore*0.3"
             }
         ]
     },
@@ -139,6 +141,33 @@ export const CarbonData = [
         ]
     },
     {
+        "question": "Where do you live? ",
+        "icon": "live",
+        "multiple": false,
+        "subtext": "I swear we aren't creepy",
+         "isSubScore": true,
+        "options": [
+            {
+                "type": "text",
+                "value": "Apartment",
+                "aside": "0-2 bedrooms",
+                "score": 4.1
+            },
+            {
+                "type": "text",
+                "value": "House",
+                "aside": "3-5 bedrooms",
+                "score": 8.2
+            },
+            {
+                "type": "text",
+                "value": "Big house",
+                "aside": "5+ bedrooms",
+                "score": 12.3
+            }
+        ]
+    },
+    {
         "question": "Got it, how many people live there?",
         "icon": "people_count",
         "multiple": false,
@@ -147,33 +176,8 @@ export const CarbonData = [
             {
                 "type": "input",
                 "value": "Type your answer here...",
-                "aside": "people"
-            }
-        ]
-    },
-    {
-        "question": "Where do you live? ",
-        "icon": "live",
-        "multiple": false,
-        "subtext": "I swear we aren't creepy",
-        "options": [
-            {
-                "type": "text",
-                "value": "Apartment",
-                "aside": "0-2 bedrooms",
-                "score": "4.1/parseInt(prevSelections[0])"
-            },
-            {
-                "type": "text",
-                "value": "House",
-                "aside": "3-5 bedrooms",
-                "score": "8.2/parseInt(prevSelections[0])"
-            },
-            {
-                "type": "text",
-                "value": "Big house",
-                "aside": "5+ bedrooms",
-                "score": "12.3/parseInt(prevSelections[0])"
+                "aside": "people",
+                "score": "prevSubScore/value"
             }
         ]
     },
@@ -203,30 +207,31 @@ export const CarbonData = [
         "question": "About how much stuff do you order online?",
         "icon": "stuff_count",
         "multiple": false,
+        "isSubScore": true,
         "options": [
             {
                 "type": "text",
                 "value": "All my stuff",
                 "aside": "30+ items per month",
-                "score": +2.2
+                "score": 2.2
             },
             {
                 "type": "text",
                 "value": "Some stuff",
                 "aside": "10-20 items",
-                "score": +1.1
+                "score": 1.1
             },
             {
                 "type": "text",
                 "value": "Barely any stuff",
                 "aside": "less than 10 items",
-                "score": +0.3
+                "score": 0.3
             },
             {
                 "type": "input",
                 "value": "Other",
                 "aside": "items per month",
-                "score": "parseInt(value)*0.05"
+                "score": "value*0.05"
             }
         ]
     },
@@ -234,21 +239,22 @@ export const CarbonData = [
         "question": "When do you get new stuff?",
         "icon": "new_stuff",
         "multiple": false,
+        "isSubScore": true,
         "options": [
             {
                 "type": "text",
                 "value": "I'm always getting new stuff",
-                "score": "prevScore*2",
+                "score": "prevSubScore*2",
             },
             {
                 "type": "text",
                 "value": "I sometimes get new stuff",
-                "score": "prevScore*1",
+                "score": "prevSubScore*1",
             },
             {
                 "type": "text",
                 "value": "I wait until my old stuff breaks",
-                "score": "prevScore*0.5",
+                "score": "prevSubScore*0.5",
             }
         ]
     },
@@ -261,24 +267,24 @@ export const CarbonData = [
                 "type": "text",
                 "value": "Big stuff",
                 "aside": "like furniture and TVs",
-                "score": "prevScore*3"
+                "score": "prevSubScore*3"
             },
             {
                 "type": "text",
                 "value": "Medium stuff",
                 "aside": "like clothes and books",
-                "score": "prevScore*1.5"
+                "score": "prevSubScore*1.5"
             },
             {
                 "type": "text",
                 "value": "Small stuff",
                 "aside": "like pens and cards",
-                "score": "prevScore*1"
+                "score": "prevSubScore*1"
             },
             {
                 "type": "text",
                 "value": "All kinds of stuff",
-                "score": "prevScore*1.5"
+                "score": "prevSubScore*1.5"
             }
         ]
     },
