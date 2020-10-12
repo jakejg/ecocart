@@ -7,6 +7,7 @@ import {
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Spinner from 'react-bootstrap/Spinner';
+import HubspotForm from 'react-hubspot-form'
 
 import CartItem from './CartItem';
 import './checkoutForm.scss'
@@ -20,8 +21,29 @@ const CheckoutForm = ({ amount }) => {
     const [processing, setProcessing] = useState('');
     const [disabled, setDisabled] = useState(true);
     const [clientSecret, setClientSecret] = useState('');
+    const [iframeIsLoaded, setIframeIsLoaded ] = useState(false);
     const stripe = useStripe();
     const elements = useElements();
+
+    // create script for hubspot form
+    const script = document.createElement('script');
+    script.src = 'https://js.hsforms.net/forms/v2.js';
+    document.body.appendChild(script);
+
+
+    script.addEventListener('load', () => {
+        setIframeIsLoaded(true);
+        })
+
+    useEffect(() => {
+        if(iframeIsLoaded) {
+            window.hbspt.forms.create({
+              portalId: '7682224',
+              formId: '03ab0a2d-5a0f-4cae-a2f5-aaa26a9f068e',
+              target: '#hubspotForm'
+          })
+      }
+    }, [iframeIsLoaded]);
 
     useEffect(() => {
         // Create PaymentIntent as soon as the page loads       
@@ -39,23 +61,8 @@ const CheckoutForm = ({ amount }) => {
             setClientSecret(data.clientSecret);
         });
     }, []);
-    // const cardStyle = {
-    //     style: {
-    //         base: {
-    //             color: "#32325d",
-    //             fontFamily: 'Arial, sans-serif',
-    //             fontSmoothing: "antialiased",
-    //             fontSize: "16px",
-    //             "::placeholder": {
-    //               color: "#32325d"
-    //             }
-    //         },
-    //         invalid: {
-    //             color: "#fa755a",
-    //             iconColor: "#fa755a"
-    //         }
-    //     }
-    // };
+
+      	     
     const handleChange = async (event) => {
         // Listen for changes in the CardElement
         // and display any errors as the customer types their card details
@@ -123,7 +130,7 @@ const CheckoutForm = ({ amount }) => {
                             Stripe dashboard.
                           </a> Refresh the page to pay again. */}
                         {/* </p> */}
-                    </form>
+                    </form> 
                 </Col>
                 <Col>
                     <h5>Your Cart</h5>
@@ -139,6 +146,7 @@ const CheckoutForm = ({ amount }) => {
                         <div>Total</div>
                         <div>${amount}</div>
                     </div>
+                    <div id="hubspotForm" class='hubspotForm'></div>
                 </Col>
             </Row>
         </div>
