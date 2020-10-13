@@ -1,11 +1,11 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "e2d2de4d3b40b6792e50872c0b52ccce",
+    "revision": "a82c132e472f3da59d88030f2f717cb2",
     "url": "/ecocart/index.html"
   },
   {
-    "revision": "918ada5b592e6b85462c",
-    "url": "/ecocart/static/css/main.b0553001.chunk.css"
+    "revision": "288cbc84bda79ccfcb3b",
+    "url": "/ecocart/static/css/main.75e43d97.chunk.css"
   },
   {
     "revision": "a8142c88e3b827d13e23",
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/ecocart/static/js/2.1517b700.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "918ada5b592e6b85462c",
-    "url": "/ecocart/static/js/main.68e3b128.chunk.js"
+    "revision": "288cbc84bda79ccfcb3b",
+    "url": "/ecocart/static/js/main.a39976fa.chunk.js"
   },
   {
     "revision": "9e3596c256c8349058a5",
@@ -64,8 +64,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/ecocart/static/media/new_stuff.18f2d56d.png"
   },
   {
-    "revision": "79f8ec460e0b11cbbff927a3ba6ba8b5",
-    "url": "/ecocart/static/media/people_count.79f8ec46.png"
+    "revision": "19509f06c871fb0bdebeb203987740b7",
+    "url": "/ecocart/static/media/people_count.19509f06.png"
   },
   {
     "revision": "01e4fac17da17427e70ba2ece92916ec",
