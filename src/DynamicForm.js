@@ -363,7 +363,7 @@ export class DynamicForm extends Component {
                                 <Col md="8" className={'flex-center'}>
                                     <div className="header">{question}</div> 
                                     {questionObj.multiple &&
-                                        <div className="text-left nudge-down subheader">Select multiple.</div>
+                                        <div className="nudge-down subheader multiple">Select multiple.</div>
                                     }
                                 {questionObj.subtext &&
                                         <div className="subtext">{questionObj.subtext}</div>}

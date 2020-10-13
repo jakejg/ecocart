@@ -243,10 +243,10 @@ $option-fill-stats: white;
     .button-text {
         font-size: 1rem;
     }
-    .header {
-        text-align: center;
+    .header, .multiple {
+        text-align: center; 
     }
-    .subtext{
+    .subtext {
         text-align: center !important;
     }
     
