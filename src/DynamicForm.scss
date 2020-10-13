@@ -238,18 +238,30 @@ $option-fill-stats: white;
 
         .option-aside {
         font-size: 1rem;
-    }
+        } 
+
+        .question-image {
+            margin-bottom: 20px;
+            width: 4rem;
+            height: 4rem;
+        }
+        .subtext {
+            text-align: center;
+        }
     }
     .button-text {
         font-size: 1rem;
     }
-    .header, .multiple {
+    .header {
         text-align: center; 
+        font-size: 1.2rem;
     }
-    .subtext {
-        text-align: center !important;
+    .multiple {
+        margin-top: 10px;
+        text-align: center;
+        font-size: 1rem;
     }
-    
+   
     .text {
         display: block;
         line-height: 20px;
@@ -258,9 +270,7 @@ $option-fill-stats: white;
     .nudge-down-l {
         max-width: 100%;
     }
-    .question-image {
-        margin-bottom: 20px;
-    }
+   
 }
 
 .progress-container {
