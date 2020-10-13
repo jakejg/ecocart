@@ -345,178 +345,136 @@ export class DynamicForm extends Component {
                     </div>
             }
             <div className="form">
+                <div className="questions-answers">
             
-                <CSSTransition 
-                 in={this.state.slideAnimation}
-                 classNames="question"
-                 timeout={1700}
-                 appear
-                 >
-                <div>
-                {!isAtSummary
-                    ? <>
-                        <Row>
-                            <Col md="4">
-                                <img className="question-image" src={require(`./assets/images/${questionObj.icon}.png`)}></img>
-                            </Col>
-                            <Col md="8" className={'flex-center'}>
-                                <div className="header">{question}</div> 
-                                {questionObj.multiple &&
-                                    <div className="text-left nudge-down subheader">Select multiple.</div>
-                                }
-                            {questionObj.subtext &&
-                                    <div className="subtext">{questionObj.subtext}</div>}
-                            </Col>
-                        </Row>
-                        {/* <Row>
-                            <Col>
-                            
-                            </Col>
-                        </Row> */}
-                    </>
-                    : <div>
-                        <div className="subheader summary-header">Your annual carbon emissions are:</div>
-                        <div className={'stats-container nudge-down'}>
-                            <div className="stat-container">
-                                <img className={'stat-image'} src={require(`./assets/images/co2.png`)}></img>
-                                <div className={'stat-value'}>{emissions}</div>
-                                <div>lbs of CO2</div>
-                            </div>
-                            <div className="stat-separator">
-                                =
-                        </div>
-                            <div className="stat-container nudge-right">
-                                <img className={'stat-image'} src={require(`./assets/images/tree_icon.png`)}></img>
-                                <div className={'stat-value'}>{trees}</div>
-                                <div>trees cut down</div>
-                            </div>
-                            <div className="stat-separator">
-                                OR
-                        </div>
-                            <div className="stat-container nudge-right">
-                                <img className={'stat-image'} src={require(`./assets/images/home.png`)}></img>
-                                <div className={'stat-value'}>{homes}</div>
-                                <div>homes powered</div>
-                            </div>
-                        </div>
-                        <div className={'summary-tagline'}>
-                            <b>Join the fight against Climate Change by offsetting your carbon footprint</b>
-                               <OverlayTrigger
-                                    key={'top'}
-                                    trigger={['hover', 'focus']}
-                                    placement={'top'}
-                                    delay={{show: 0, hide: 2000}}
-                                    overlay={
-                                        <Tooltip id={'tooltip-top'} className={'tooltip-top'}>
-                                            Offset your carbon footprint by helping protect the <a className={'boldface-link'} href="https://ecocart.io/project/forest-protection/" target="_blank">Tri-City Forest</a>
-                                        </Tooltip>
+                    <CSSTransition 
+                     in={this.state.slideAnimation}
+                     classNames="question"
+                     timeout={1700}
+                     appear
+                     >
+                    <div>
+                    {!isAtSummary
+                        ? <>
+                            <Row>
+                                <Col md="4">
+                                    <img className="question-image" src={require(`./assets/images/${questionObj.icon}.png`)}></img>
+                                </Col>
+                                <Col md="8" className={'flex-center'}>
+                                    <div className="header">{question}</div> 
+                                    {questionObj.multiple &&
+                                        <div className="text-left nudge-down subheader">Select multiple.</div>
                                     }
-                                    >
-                                    <FontAwesomeIcon className={'nudge-right icon'} icon={faQuestionCircle}/>
-                                </OverlayTrigger>
-                        </div>
-                    </div>
-                }
-                <div className={'nudge-down-l'}>
-                    {options.length != 1
-                        ? Object.keys(options).map(answerIndex =>
-                            <Card key={`${path[path.length - 1]}${answerIndex}`} className={`nudge-down options ${currAnswer[answerIndex] != null ? "options-selected" : ''} ${isAtSummary ? "options-stats" : ''}`}
-                                onClick={(event) => {
-                                   
-                                    if (this.state.isAtSummary && options[answerIndex].type !== 'input') {
-                                        this.checkAnswer(answerIndex, options[answerIndex].type == 'input' && currAnswer[answerIndex] == null ? '' : options[answerIndex].type == 'input' ? currAnswer[answerIndex] : options[answerIndex].value, () => {});
-                                        this.setState({ payableAmount: options[answerIndex].value.substring(1), productName: options[answerIndex].aside});
-                                    return;
-                                    }
-                                    this.checkAnswer(answerIndex, options[answerIndex].type == 'input' && currAnswer[answerIndex] == null ? '' : options[answerIndex].type == 'input' ? currAnswer[answerIndex] : options[answerIndex].value, () => {
-                                        if (options[answerIndex].type != 'input' && !questionObj.multiple && !this.state.answerSelected) this.nextQuestionHandler();
-                                    });
-                                }} body>
-                                <Row>
-                                    <Col className={options[answerIndex].aside ? 'b' : `main-text`}>
-                                        <span className="text">{options[answerIndex].value}</span>
-                                    </Col>
-                                    {options[answerIndex].aside &&
-                                    <Col className={'text-right b'}>
-                                        {options[answerIndex].type == 'input' && currAnswer[answerIndex] != null &&
-                                            <>
-                                            {this.state.isAtSummary && <span className='money-label'>$</span>}
-                                            <input id='custom-input' onClick={(event) => event.stopPropagation()} onChange={(event) => this.checkAnswer(answerIndex, event.target.value, () => { }, event.target)} autoFocus className={'option-input'} value={currAnswer[answerIndex]}></input>
-                                            </>
-                                        }
-                                        <span className={'option-aside'}>{options[answerIndex].aside}</span>
-                                    </Col>
-                                    }
-                                </Row>
-                            </Card>
-                        )
+                                {questionObj.subtext &&
+                                        <div className="subtext">{questionObj.subtext}</div>}
+                                </Col>
+                            </Row>
+                        </>
                         : <div>
-                            <input onChange={(event) => this.checkAnswer(0, event.target.value, () => { }, event.target)} value={this.state.currAnswer[0]} placeholder={options[0].value} autoFocus className={'option-input-only'}></input>
-                            <span className={'option-aside'}>{options[0].aside}</span>
+                            <div className="subheader summary-header">Your annual carbon emissions are:</div>
+                            <div className={'stats-container nudge-down'}>
+                                <div className="stat-container">
+                                    <img className={'stat-image'} src={require(`./assets/images/co2.png`)}></img>
+                                    <div className={'stat-value'}>{emissions}</div>
+                                    <div>lbs of CO2</div>
+                                </div>
+                                <div className="stat-separator">
+                                    =
+                            </div>
+                                <div className="stat-container nudge-right">
+                                    <img className={'stat-image'} src={require(`./assets/images/tree_icon.png`)}></img>
+                                    <div className={'stat-value'}>{trees}</div>
+                                    <div>trees cut down</div>
+                                </div>
+                                <div className="stat-separator">
+                                    OR
+                            </div>
+                                <div className="stat-container nudge-right">
+                                    <img className={'stat-image'} src={require(`./assets/images/home.png`)}></img>
+                                    <div className={'stat-value'}>{homes}</div>
+                                    <div>homes powered</div>
+                                </div>
+                            </div>
+                            <div className={'summary-tagline'}>
+                                <b>Join the fight against Climate Change by offsetting your carbon footprint</b>
+                                   <OverlayTrigger
+                                        key={'top'}
+                                        trigger={['hover', 'focus']}
+                                        placement={'top'}
+                                        delay={{show: 0, hide: 2000}}
+                                        overlay={
+                                            <Tooltip id={'tooltip-top'} className={'tooltip-top'}>
+                                                Offset your carbon footprint by helping protect the <a className={'boldface-link'} href="https://ecocart.io/project/forest-protection/" target="_blank">Tri-City Forest</a>
+                                            </Tooltip>
+                                        }
+                                        >
+                                        <FontAwesomeIcon className={'nudge-right icon'} icon={faQuestionCircle}/>
+                                    </OverlayTrigger>
+                            </div>
                         </div>
                     }
-                </div>
-                    <Row className={'nudge-down-l click-row'}>
-                        {!isAtSummary &&
-                        <Col className={'button-col'}>
-                            {path.length > 1 &&
-                                <Button className={'back-button'}onClick={this.prevQuestionHandler} variant="success">
-                                    <span className={'button-text'}>
-                                    <FontAwesomeIcon className='left-arrow' icon={faLongArrowAltLeft} />
-                                    BACK
+                    <div className={'nudge-down-l'}>
+                        {options.length != 1
+                            ? Object.keys(options).map(answerIndex =>
+                                <Card key={`${path[path.length - 1]}${answerIndex}`} className={`nudge-down options ${currAnswer[answerIndex] != null ? "options-selected" : ''} ${isAtSummary ? "options-stats" : ''}`}
+                                    onClick={(event) => {
+                                    
+                                        if (this.state.isAtSummary && options[answerIndex].type !== 'input') {
+                                            this.checkAnswer(answerIndex, options[answerIndex].type == 'input' && currAnswer[answerIndex] == null ? '' : options[answerIndex].type == 'input' ? currAnswer[answerIndex] : options[answerIndex].value, () => {});
+                                            this.setState({ payableAmount: options[answerIndex].value.substring(1), productName: options[answerIndex].aside});
+                                        return;
+                                        }
+                                        this.checkAnswer(answerIndex, options[answerIndex].type == 'input' && currAnswer[answerIndex] == null ? '' : options[answerIndex].type == 'input' ? currAnswer[answerIndex] : options[answerIndex].value, () => {
+                                            if (options[answerIndex].type != 'input' && !questionObj.multiple && !this.state.answerSelected) this.nextQuestionHandler();
+                                        });
+                                    }} body>
+                                    <Row>
+                                        <Col className={options[answerIndex].aside ? 'b' : `main-text`}>
+                                            <span className="text">{options[answerIndex].value}</span>
+                                        </Col>
+                                        {options[answerIndex].aside &&
+                                        <Col className={'text-right b'}>
+                                            {options[answerIndex].type == 'input' && currAnswer[answerIndex] != null &&
+                                                <>
+                                                {this.state.isAtSummary && <span className='money-label'>$</span>}
+                                                <input id='custom-input' onClick={(event) => event.stopPropagation()} onChange={(event) => this.checkAnswer(answerIndex, event.target.value, () => { }, event.target)} autoFocus className={'option-input'} value={currAnswer[answerIndex]}></input>
+                                                </>
+                                            }
+                                            <span className={'option-aside'}>{options[answerIndex].aside}</span>
+                                        </Col>
+                                        }
+                                    </Row>
+                                </Card>
+                            )
+                            : <div>
+                                <input onChange={(event) => this.checkAnswer(0, event.target.value, () => { }, event.target)} value={this.state.currAnswer[0]} placeholder={options[0].value} autoFocus className={'option-input-only'}></input>
+                                <span className={'option-aside'}>{options[0].aside}</span>
+                            </div>
+                        }
+                    </div>
+                        <Row className={'nudge-down-l click-row'}>
+                            {!isAtSummary &&
+                            <Col className={'button-col'}>
+                                {path.length > 1 &&
+                                    <Button className={'back-button'}onClick={this.prevQuestionHandler} variant="success">
+                                        <span className={'button-text'}>
+                                        <FontAwesomeIcon className='left-arrow' icon={faLongArrowAltLeft} />
+                                        BACK
+                                        </span>
+                                    </Button>
+                                }
+                            </Col>}
+                            <Col className={'button-col'}>
+                                <Button className={'next-button'} disabled={this.state.disabled} onClick={this.handleNext} variant="success">
+                                    <span className={'button-text'}>{isAtSummary ? "Offset my carbon footprint" : "NEXT"}
+                                    <FontAwesomeIcon className='right-arrow' icon={faLongArrowAltRight} />
                                     </span>
                                 </Button>
-                            }
-                        </Col>}
-                        <Col className={'button-col'}>
-                            <Button className={'next-button'} disabled={this.state.disabled} onClick={this.handleNext} variant="success">
-                                <span className={'button-text'}>{isAtSummary ? "Offset my carbon footprint" : "NEXT"}
-                                <FontAwesomeIcon className='right-arrow' icon={faLongArrowAltRight} />
-                                </span>
-                            </Button>
-                        </Col>
-                    </Row>
+                            </Col>
+                        </Row>
+                    </div>
+                    </CSSTransition>
                 </div>
-                </CSSTransition>
-                {/* <Modal show={this.state.checkoutModalShow} onHide={() => this.setState({ checkoutModalShow: false })} size={'lg'} centered>
-                    <Modal.Header closeButton>
-                        <Modal.Title>Awesome! Would you like to confirm payment?</Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body>
-                        <div>To: <span className="">{this.state.productName}</span></div>
-                        <div>Amount = <span className="subheader">$
-                            {this.state.productName === 'Offset my emissions' ?
-                               <input value={this.state.payableAmount} onChange={this.handleTyping} type='text' autoFocus/> :
-                                this.state.payableAmount }
-                            </span></div>
-                            {this.state.showCheckout &&
-                            <Elements stripe={stripePromise}>
-                                <CheckoutForm item={{name: this.state.productName, amount: this.state.payableAmount}}/>
-                            </Elements>}
-                    </Modal.Body>
-                    <Modal.Footer>
-                        {this.state.connectionError &&
-                            <div className="error-text">Oops! That errored out. Please click again.</div>
-                        }
-                        <Button className={'action-button'} disabled={this.state.clickedCheckoutConfirm} variant="success" onClick={this.handleConfirmPayment}>
-                            CONFIRM
-                            {!this.state.clickedCheckoutConfirm &&
-                                <FontAwesomeIcon className={'nudge-right-l'} icon={faLongArrowAltRight} />
-                            }
-                            {this.state.clickedCheckoutConfirm &&
-                                <Spinner className={'nudge-right'} animation="border" variant="light" />
-                            }
-                        </Button>
-                        {/* <Button variant="secondary" onClick={() => this.setState({ checkoutModalShow: false })}>
-                            Close
-                        </Button>
-                        <Button variant="primary" onClick={() => this.setState({ checkoutModalShow: false })}>
-                            Save Changes
-                        </Button> */
-                    /* </Modal.Footer>
-                </Modal> */}
-
-
             </div>
         </>
         )

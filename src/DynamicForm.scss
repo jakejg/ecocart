@@ -25,8 +25,8 @@ $progress-background: #ffffff80;
 $progress-container: #67C0DF;
 
 // stat specs
-$stats-image-height: 5rem;
-$stat-width: 11rem;
+$stats-image-height: 3rem;
+$stat-width: 7rem;
 $stat-background: #80B5D5;
 $stat-text: white;
 $option-fill-stats: white;
@@ -35,6 +35,10 @@ $option-fill-stats: white;
 .form {
     max-width: 50%;
     margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
 
     .question-image {
         width: $question-image-width;
@@ -97,6 +101,7 @@ $option-fill-stats: white;
         width: $option-input-width;
         height: $option-input-height;
         outline: none;
+        text-align: left;
         // margin-left: -25px;
     }
 
@@ -104,6 +109,10 @@ $option-fill-stats: white;
         @extend .option-input;
         width: max-content;
         margin-left: 0px;
+        margin-bottom: 10px;
+        margin-top: 10px;
+        text-align: center;
+
     }
 
     .nudge-down-l {
@@ -161,7 +170,7 @@ $option-fill-stats: white;
         .stat-container {
             color: $stat-text;
             background: $stat-background;
-            padding: $displacement;
+            padding: 5px;
             border-radius: $box-radius;
             width: $stat-width;
             margin: 0 15px 0px 15px;
@@ -183,6 +192,12 @@ $option-fill-stats: white;
     @media (max-width: 500px){
         .stats-container {
             flex-direction: column;
+            .stat-container {
+                width: 11rem;
+            }
+            .stat-image {
+                height: 5rem;
+            }                      
         }
     }
     .next-button {
@@ -228,17 +243,23 @@ $option-fill-stats: white;
     .button-text {
         font-size: 1rem;
     }
-   
+    .header {
+        text-align: center;
+    }
+    .subtext{
+        text-align: center !important;
+    }
     
     .text {
         display: block;
-        font-size: 18px;
         line-height: 20px;
     }
 
     .nudge-down-l {
         max-width: 100%;
-        // margin: 50px auto; 
+    }
+    .question-image {
+        margin-bottom: 20px;
     }
 }
 
