@@ -7,7 +7,6 @@ import {
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Spinner from 'react-bootstrap/Spinner';
-import HubspotForm from 'react-hubspot-form'
 
 import CartItem from './CartItem';
 import './checkoutForm.scss'

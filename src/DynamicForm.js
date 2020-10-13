@@ -354,19 +354,26 @@ export class DynamicForm extends Component {
                  >
                 <div>
                 {!isAtSummary
-                    ? <Row>
-                        <Col md="6">
-                            <img className="question-image" src={require(`./assets/images/${questionObj.icon}.png`)}></img>
-                        </Col>
-                        <Col md="6" className={'flex-center'}>
-                            <div className="header">{question}</div>
-                            {questionObj.multiple &&
-                                <div className="text-left nudge-down subheader">Select multiple.</div>
-                            }
+                    ? <>
+                        <Row>
+                            <Col md="4">
+                                <img className="question-image" src={require(`./assets/images/${questionObj.icon}.png`)}></img>
+                            </Col>
+                            <Col md="8" className={'flex-center'}>
+                                <div className="header">{question}</div> 
+                                {questionObj.multiple &&
+                                    <div className="text-left nudge-down subheader">Select multiple.</div>
+                                }
                             {questionObj.subtext &&
-                                <div className="text-left nudge-down subheader">{questionObj.subtext}</div>}
-                        </Col>
-                    </Row>
+                                    <div className="subtext">{questionObj.subtext}</div>}
+                            </Col>
+                        </Row>
+                        {/* <Row>
+                            <Col>
+                            
+                            </Col>
+                        </Row> */}
+                    </>
                     : <div>
                         <div className="subheader summary-header">Your annual carbon emissions are:</div>
                         <div className={'stats-container nudge-down'}>

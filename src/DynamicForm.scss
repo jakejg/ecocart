@@ -9,8 +9,8 @@ $option-aside: #595959;
 $back-button-color: #BFBFBF;
 
 
-$question-image-height: 8rem;
-$question-image-width: 8rem;
+$question-image-height: 6rem;
+$question-image-width: 6rem;
 $options-border: 2px solid $option-outline;
 $options-border-selected: 2px solid $option-outline-selected;
 $option-input-height: 2rem;
@@ -30,7 +30,6 @@ $stat-width: 11rem;
 $stat-background: #80B5D5;
 $stat-text: white;
 $option-fill-stats: white;
-
 
 
 .form {
@@ -64,7 +63,7 @@ $option-fill-stats: white;
         text-align: left;
         border: $options-border;
         background-color: $option-fill;
-        font-size: $emphasis-font-size;
+        font-size: 1rem;
         font-weight: $font-heavy;
         user-select: none;
         border-radius: $options-round-edges;
@@ -86,7 +85,7 @@ $option-fill-stats: white;
     .option-aside {
         display: inline;
         line-height: normal;
-        font-size: $subheader-font-size;
+        font-size: 1rem;
         font-weight: $font-normal;
     }
 
@@ -141,11 +140,16 @@ $option-fill-stats: white;
     }
 
     .card-body {
-        padding: $displacement;
+        padding: 7px;
     }
     
     .summary-header{
         margin-bottom: 25px;
+    }
+
+    .subtext {
+        text-align: left;
+        margin-top: 5px;
     }
 
     .stats-container {
@@ -186,6 +190,11 @@ $option-fill-stats: white;
         white-space: nowrap;
         box-sizing: border-box;
         border: none;
+        padding: 8px;
+    }
+
+    .button-text {
+        font-size: 1rem;
     }
 
     .back-button {
@@ -227,10 +236,6 @@ $option-fill-stats: white;
         line-height: 20px;
     }
 
-    .home-content {
-        padding: 0px;
-    }
-
     .nudge-down-l {
         max-width: 100%;
         // margin: 50px auto; 
@@ -242,7 +247,7 @@ $option-fill-stats: white;
     color: $option-aside;
     text-align: start;
     padding: $icon-text-spacing;
-    margin-bottom: 5px;
+    margin-bottom: 20px;
     border-radius: $box-radius;
     width: $progress-container-width;
     .progress-text {
