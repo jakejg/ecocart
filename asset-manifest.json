@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/ecocart/static/css/main.75e43d97.chunk.css",
-    "main.js": "/ecocart/static/js/main.a39976fa.chunk.js",
-    "main.js.map": "/ecocart/static/js/main.a39976fa.chunk.js.map",
+    "main.css": "/ecocart/static/css/main.d7db2ec1.chunk.css",
+    "main.js": "/ecocart/static/js/main.10576840.chunk.js",
+    "main.js.map": "/ecocart/static/js/main.10576840.chunk.js.map",
     "runtime-main.js": "/ecocart/static/js/runtime-main.55ccef53.js",
     "runtime-main.js.map": "/ecocart/static/js/runtime-main.55ccef53.js.map",
     "static/js/2.1517b700.chunk.js": "/ecocart/static/js/2.1517b700.chunk.js",
     "static/js/2.1517b700.chunk.js.map": "/ecocart/static/js/2.1517b700.chunk.js.map",
     "index.html": "/ecocart/index.html",
-    "precache-manifest.bacddf28ae5ec33f3a94bc12e6c91110.js": "/ecocart/precache-manifest.bacddf28ae5ec33f3a94bc12e6c91110.js",
+    "precache-manifest.0e0c5b370a595a97f5ec3f42e36e80a8.js": "/ecocart/precache-manifest.0e0c5b370a595a97f5ec3f42e36e80a8.js",
     "service-worker.js": "/ecocart/service-worker.js",
-    "static/css/main.75e43d97.chunk.css.map": "/ecocart/static/css/main.75e43d97.chunk.css.map",
+    "static/css/main.d7db2ec1.chunk.css.map": "/ecocart/static/css/main.d7db2ec1.chunk.css.map",
     "static/js/2.1517b700.chunk.js.LICENSE.txt": "/ecocart/static/js/2.1517b700.chunk.js.LICENSE.txt",
     "static/media/airplane.png": "/ecocart/static/media/airplane.9a602c73.png",
     "static/media/car.png": "/ecocart/static/media/car.d8440113.png",
@@ -34,7 +34,7 @@
   "entrypoints": [
     "static/js/runtime-main.55ccef53.js",
     "static/js/2.1517b700.chunk.js",
-    "static/css/main.75e43d97.chunk.css",
-    "static/js/main.a39976fa.chunk.js"
+    "static/css/main.d7db2ec1.chunk.css",
+    "static/js/main.10576840.chunk.js"
   ]
 }
