@@ -339,9 +339,9 @@ export class DynamicForm extends Component {
             {!isAtSummary &&
                     <div className="progress-container">
                         <div className="progress-text">{
-                            `${(disabled ? path[path.length - 1] : path[path.length - 1] + 1)} of ${CarbonData.length} answered`
+                            `${path[path.length - 1]} of ${CarbonData.length} answered`
                         }</div>
-                        <ProgressBar now={(disabled ? path[path.length - 1] : path[path.length - 1] + 1) / CarbonData.length * 100} />
+                        <ProgressBar now={path[path.length - 1] / CarbonData.length * 100} />
                     </div>
             }
             <div className="form">
