@@ -39,7 +39,7 @@ export class DynamicForm extends Component {
             currAnswer: [],
             options: [],
             disabled: true,
-            isAtSummary: false,
+            isAtSummary: JSON.parse(sessionStorage.getItem('isAtSummary')) || false,
             checkoutModalShow: false,
             payableAmount: 10,
             productName: "Test",
@@ -245,37 +245,39 @@ export class DynamicForm extends Component {
         // this.props.handleSubmit()
     }
 
-    overToStripe = async () => {
-        this.setState({ clickedCheckoutConfirm: true });
-        const stripe = await stripePromise;
-        const response = await fetch("https://ecocart-stripe-server.herokuapp.com/create-session", {
-            method: "POST",
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ productName: this.state.productName, payableAmount: this.state.payableAmount })
-        });
-        if (response.error) {
-            this.setState({ clickedCheckoutConfirm: false, connectionError: true });
-            return;
-        }
-        const session = await response.json();
-        // When the customer clicks on the button, redirect them to Checkout.
-        const result = await stripe.redirectToCheckout({
-            sessionId: session.id,
-        });
-        if (result.error) {
-            // If `redirectToCheckout` fails due to a browser or network
-            // error, display the localized error message to your customer
-            // using `result.error.message`.
-            this.setState({ clickedCheckoutConfirm: false, connectionError: true })
-        }
-    }
+    // overToStripe = async () => {
+    //     this.setState({ clickedCheckoutConfirm: true });
+    //     const stripe = await stripePromise;
+    //     const response = await fetch("https://ecocart-stripe-server.herokuapp.com/create-session", {
+    //         method: "POST",
+    //         headers: { 'Content-Type': 'application/json' },
+    //         body: JSON.stringify({ productName: this.state.productName, payableAmount: this.state.payableAmount })
+    //     });
+    //     if (response.error) {
+    //         this.setState({ clickedCheckoutConfirm: false, connectionError: true });
+    //         return;
+    //     }
+    //     const session = await response.json();
+    //     // When the customer clicks on the button, redirect them to Checkout.
+    //     const result = await stripe.redirectToCheckout({
+    //         sessionId: session.id,
+    //     });
+    //     if (result.error) {
+    //         // If `redirectToCheckout` fails due to a browser or network
+    //         // error, display the localized error message to your customer
+    //         // using `result.error.message`.
+    //         this.setState({ clickedCheckoutConfirm: false, connectionError: true })
+    //     }
+    // }
 
 
     handleNext = () => {
         
         if (this.state.isAtSummary){
-            // get selected amount to pay
-            let amount = this.state.currAnswer.find(val => val !== null)
+             // get selected amount to pay
+            const answerArray = this.state.currAnswer || JSON.parse(sessionStorage.getItem('currAnswer'));
+            let amount = answerArray.find(val => typeof val === 'string');
+
             if (amount.startsWith('$')){
                 amount = amount.substring(1);
             }
@@ -287,7 +289,6 @@ export class DynamicForm extends Component {
         else {
             this.nextQuestionHandler();
         }
-        
     }
 
     render() {
@@ -298,9 +299,19 @@ export class DynamicForm extends Component {
         // if this render is actually the summary
         var emissions, trees, homes
         if (isAtSummary) {
-            var totalScore = 0
+            var totalScore = JSON.parse(sessionStorage.getItem('isAtSummary')) || 0;
             console.log(carbonScores)
-            for (let score of carbonScores) totalScore += score
+            if (totalScore === 0){
+                for (let score of carbonScores) {
+                    totalScore += score;
+                }
+            }
+            
+            // save info to session storage so user can go back from checkout screen
+            sessionStorage.setItem('totalScore', JSON.stringify(totalScore));
+            sessionStorage.setItem('currAnswer', JSON.stringify(currAnswer));
+            sessionStorage.setItem('isAtSummary', JSON.stringify(true));
+
             options = [
                 {
                     "type": "text",
@@ -326,10 +337,11 @@ export class DynamicForm extends Component {
             emissions = Math.round(totalScore * 2205).toLocaleString()
             trees = Math.round(totalScore * 4.41).toLocaleString()
             homes = Math.round(totalScore * 0.4).toLocaleString()
+
         }
         if (this.state.showCheckout){
-            console.log(this.state.payableAmount)
-            return <Redirect to={{
+     
+            return <Redirect push to={{
                 pathname: "/checkout",
                 state: this.state.payableAmount
               }}/>

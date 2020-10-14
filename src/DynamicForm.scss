@@ -156,10 +156,11 @@ $option-fill-stats: white;
         margin-bottom: 25px;
     }
 
-    .subtext {
+    .subtext, .multiple {
         text-align: left;
         margin-top: 5px;
     }
+
 
     .stats-container {
         display: flex;
@@ -258,7 +259,6 @@ $option-fill-stats: white;
     }
     .multiple {
         margin-top: 10px;
-        text-align: center;
         font-size: 1rem;
     }
    
@@ -269,8 +269,7 @@ $option-fill-stats: white;
 
     .nudge-down-l {
         max-width: 100%;
-    }
-   
+    }  
 }
 
 .progress-container {
