@@ -299,7 +299,7 @@ export class DynamicForm extends Component {
         // if this render is actually the summary
         var emissions, trees, homes
         if (isAtSummary) {
-            var totalScore = JSON.parse(sessionStorage.getItem('isAtSummary')) || 0;
+            var totalScore = JSON.parse(sessionStorage.getItem('totalScore')) || 0;
             console.log(carbonScores)
             if (totalScore === 0){
                 for (let score of carbonScores) {
