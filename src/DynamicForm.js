@@ -441,7 +441,7 @@ export class DynamicForm extends Component {
                                         });
                                     }} body>
                                     <Row>
-                                        <Col className={options[answerIndex].aside ? 'b' : `main-text`}>
+                                        <Col className={options[answerIndex].aside ? 'b' : `main-text`} xs={options[answerIndex].aside ? 'auto' : null}>
                                             <span className="text">{options[answerIndex].value}</span>
                                         </Col>
                                         {options[answerIndex].aside &&
