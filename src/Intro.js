@@ -15,6 +15,14 @@ export class Intro extends Component {
         }
     }
 
+    handleClick = () => {
+        // reset any saved values from previous submissions
+        sessionStorage.removeItem('totalScore');
+        sessionStorage.removeItem('currAnswer');
+        sessionStorage.removeItem('isAtSummary');
+        this.setState({ navigateToForm: true })
+    }
+
     render() {
 
         if (this.state.navigateToForm)
@@ -24,9 +32,7 @@ export class Intro extends Component {
             <div class="intro">
                 <div class="header">Calculate your carbon footprint</div>
                 <div class="subheader nudge-down">Find your environmental impact in less than 5 minutes</div>
-                <Button className={'button-start'} onClick={() => /*this.props.handleClick()*/ {
-                    this.setState({ navigateToForm: true })
-                }} variant="success">Get Started</Button>{''}
+                <Button className={'button-start'} onClick={this.handleClick} variant="success">Get Started</Button>{''}
             </div>
         )
     }
