@@ -167,7 +167,7 @@ export class DynamicForm extends Component {
         }
         )
         document.addEventListener("keydown", (event) => {
-            if (event.keyCode == 13 && this.state.currAnswer.length != 0) this.nextQuestionHandler()
+            if (event.keyCode == 13 && this.state.currAnswer.length != 0) this.handleNext()
         })
     }
 
@@ -272,7 +272,6 @@ export class DynamicForm extends Component {
 
 
     handleNext = () => {
-        
         if (this.state.isAtSummary){
              // get selected amount to pay
             const answerArray = this.state.currAnswer || JSON.parse(sessionStorage.getItem('currAnswer'));
@@ -449,7 +448,12 @@ export class DynamicForm extends Component {
                                             {options[answerIndex].type == 'input' && currAnswer[answerIndex] != null &&
                                                 <>
                                                 {this.state.isAtSummary && <span className='money-label'>$</span>}
-                                                <input id='custom-input' onClick={(event) => event.stopPropagation()} onChange={(event) => this.checkAnswer(answerIndex, event.target.value, () => { }, event.target)} autoFocus className={'option-input'} value={currAnswer[answerIndex]}></input>
+                                                <input id='custom-input' onClick={(event) => event.stopPropagation()} 
+                                                                        onChange={(event) => this.checkAnswer(answerIndex, event.target.value, () => { }, event.target)} 
+                                                                        autoFocus 
+                                                                        className={'option-input'} 
+                                                                        value={currAnswer[answerIndex]}>
+                                                                        </input>
                                                 </>
                                             }
                                             <span className={'option-aside'}>{options[answerIndex].aside}</span>
