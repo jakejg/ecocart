@@ -44,6 +44,7 @@ $checkout-content-rounded-edges: 5px;
     }
 
 
+
     .checkout-overlay {
         position: absolute;
         left: 0;
@@ -67,5 +68,11 @@ $checkout-content-rounded-edges: 5px;
 @media (max-width: 700px){
     .home {
         margin: 3px;
+    }
+}
+
+@media (max-width: 400px){
+    .home {
+        background-size: cover
     }
 }

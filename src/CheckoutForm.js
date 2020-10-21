@@ -88,7 +88,7 @@ const CheckoutForm = ({ amount }) => {
     };
     return (
         <div className="checkout">
-            <Row xs="1" lg="2">
+            <Row xs="1" xl="2">
                 <Col>
                     <form className="payment-form" onSubmit={handleSubmit}>
                         <CardElement id="card-element" onChange={handleChange} />
@@ -145,7 +145,7 @@ const CheckoutForm = ({ amount }) => {
                         <div>Total</div>
                         <div>${amount}</div>
                     </div>
-                    <div id="hubspotForm" class='hubspotForm'></div>
+                    <div id="hubspotForm" className='hubspotForm'></div>
                 </Col>
             </Row>
         </div>
