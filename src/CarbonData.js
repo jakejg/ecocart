@@ -169,7 +169,7 @@ export const CarbonData = [
     },
     {
         "question": "Got it, how many people live there?",
-        "icon": "people_count",
+        "icon": "house-building",
         "multiple": false,
         "subtext": "(not including fluffy)",
         "options": [

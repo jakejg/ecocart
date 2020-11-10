@@ -407,7 +407,7 @@ export class DynamicForm extends Component {
                                 </div>
                             </div>
                             <div className={'summary-tagline'}>
-                                <b>Join the fight against Climate Change by offsetting your carbon footprint</b>
+                                <b>Join the fight against climate change by offsetting your carbon footprint</b>
                                    <OverlayTrigger
                                         key={'top'}
                                         trigger={['hover', 'focus']}
