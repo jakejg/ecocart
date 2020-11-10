@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/ecocart/static/css/main.7b391706.chunk.css",
-    "main.js": "/ecocart/static/js/main.d97ffd54.chunk.js",
-    "main.js.map": "/ecocart/static/js/main.d97ffd54.chunk.js.map",
+    "main.css": "/ecocart/static/css/main.fafb789d.chunk.css",
+    "main.js": "/ecocart/static/js/main.7b2d4e15.chunk.js",
+    "main.js.map": "/ecocart/static/js/main.7b2d4e15.chunk.js.map",
     "runtime-main.js": "/ecocart/static/js/runtime-main.55ccef53.js",
     "runtime-main.js.map": "/ecocart/static/js/runtime-main.55ccef53.js.map",
-    "static/js/2.74d45152.chunk.js": "/ecocart/static/js/2.74d45152.chunk.js",
-    "static/js/2.74d45152.chunk.js.map": "/ecocart/static/js/2.74d45152.chunk.js.map",
+    "static/js/2.2fb1d5e1.chunk.js": "/ecocart/static/js/2.2fb1d5e1.chunk.js",
+    "static/js/2.2fb1d5e1.chunk.js.map": "/ecocart/static/js/2.2fb1d5e1.chunk.js.map",
     "index.html": "/ecocart/index.html",
-    "precache-manifest.96377833f59c68379a9895c0a9a0b268.js": "/ecocart/precache-manifest.96377833f59c68379a9895c0a9a0b268.js",
+    "precache-manifest.0bc78d4d4ef78bb1cc7f5d25b2e23c0d.js": "/ecocart/precache-manifest.0bc78d4d4ef78bb1cc7f5d25b2e23c0d.js",
     "service-worker.js": "/ecocart/service-worker.js",
-    "static/css/main.7b391706.chunk.css.map": "/ecocart/static/css/main.7b391706.chunk.css.map",
-    "static/js/2.74d45152.chunk.js.LICENSE.txt": "/ecocart/static/js/2.74d45152.chunk.js.LICENSE.txt",
+    "static/css/main.fafb789d.chunk.css.map": "/ecocart/static/css/main.fafb789d.chunk.css.map",
+    "static/js/2.2fb1d5e1.chunk.js.LICENSE.txt": "/ecocart/static/js/2.2fb1d5e1.chunk.js.LICENSE.txt",
     "static/media/airplane.png": "/ecocart/static/media/airplane.9a602c73.png",
     "static/media/car.png": "/ecocart/static/media/car.d8440113.png",
     "static/media/car_electric.png": "/ecocart/static/media/car_electric.bfc48df3.png",
@@ -19,6 +19,7 @@
     "static/media/diet_type.png": "/ecocart/static/media/diet_type.001eb7b3.png",
     "static/media/heating_freq.png": "/ecocart/static/media/heating_freq.64209071.png",
     "static/media/home.png": "/ecocart/static/media/home.b83b55e8.png",
+    "static/media/house-building.png": "/ecocart/static/media/house-building.acd9cb88.png",
     "static/media/live.png": "/ecocart/static/media/live.665b810c.png",
     "static/media/Home.scss": "/ecocart/static/media/loading.46d039d8.png",
     "static/media/new_stuff.png": "/ecocart/static/media/new_stuff.18f2d56d.png",
@@ -33,8 +34,8 @@
   },
   "entrypoints": [
     "static/js/runtime-main.55ccef53.js",
-    "static/js/2.74d45152.chunk.js",
-    "static/css/main.7b391706.chunk.css",
-    "static/js/main.d97ffd54.chunk.js"
+    "static/js/2.2fb1d5e1.chunk.js",
+    "static/css/main.fafb789d.chunk.css",
+    "static/js/main.7b2d4e15.chunk.js"
   ]
 }
